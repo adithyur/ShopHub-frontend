@@ -6,6 +6,7 @@ import UserNavbar from './User/Navbar/UserNavbar';
 import MiniNavbarFooter from './User/Navbar/MiniNavbarFooter';
 import NavbarCategory from './User/Navbar/NavbarCategory';
 import MiniNavBar from './User/Navbar/MiniNavBar';
+import Footer from './User/Footer';
 
 function Category() {
 
@@ -16,10 +17,28 @@ function Category() {
   const isMobile = useMediaQuery({ query: '(max-width: 980px)' });
   const category = searchParams.get('category');
   const [product,setproduct]= useState([])
+
   const fetchproduct=async()=>{
-    const res=await axios.get(`http://localhost:8000/api/products/getcategory/${category}`)
-    setproduct(res.data)
-  }
+    try {
+      const res=await axios.get(`http://localhost:8000/api/products/getcategory/${category}`)
+
+      const productsWithRatings = await Promise.all(
+        res.data.map(async (product) => {
+          const ratingRes = await axios.get(`http://localhost:8000/api/review/getProductReviews/${product._id}`);
+          console.log('Rating Response:', ratingRes.data);
+          return {
+            ...product,
+            rating: ratingRes.data[0] ? ratingRes.data[0].review : 0,
+          };
+        })
+      );
+
+    setproduct(productsWithRatings);
+    } catch (error) {
+      console.error('Error fetching products:', error);
+    }
+  };
+
 
   useEffect(() => {
     
@@ -67,6 +86,9 @@ function Category() {
 ))}
       </div>
     </div>
+    <div>
+        <Footer/>
+      </div>
     <div>
         {isMobile && <MiniNavbarFooter />}      
       </div>

@@ -3,17 +3,15 @@ import axios from "axios";
 import { Link } from 'react-router-dom';
 import { useNavigate } from "react-router-dom";
 import { useMediaQuery } from 'react-responsive';
-
 import { FaRegAddressCard } from 'react-icons/fa';
 import { MdSecurity } from 'react-icons/md';
 import { BsBox } from 'react-icons/bs';
 import { MdOutlineSell } from 'react-icons/md';
 import { FaPowerOff } from 'react-icons/fa';
-
 import UserNavbar from './Navbar/UserNavbar';
 import MiniNavBar from './Navbar/MiniNavBar';
 import MiniNavbarFooter from './Navbar/MiniNavbarFooter';
-
+import Footer from './Footer';
 import DarkMode from '../DarkMode';
 
 
@@ -196,6 +194,9 @@ export default function Profile() {
                 </div>  
             </div>
             
+          </div>
+          <div>
+            <Footer/>
           </div>
           <div>
         {isMobile && <MiniNavbarFooter />}      

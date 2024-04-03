@@ -107,7 +107,7 @@ function ManageSellers() {
         </div>
         <div className='d-flex justify-content-center align-items-center main-form-div' /*style={{width:'100%'}}*/>
         <div className='table-responsive mx-auto my-auto' style={{ maxHeight: '500px', overflowY: 'auto', overflowX: 'auto'}}>
-  <table className='verifier-product_table'>
+  <table className='admin_product_table3'>
     <thead>
         <tr className='verifierproduct_tr'>
           <th className='verifierproduct_th'>User Id</th>

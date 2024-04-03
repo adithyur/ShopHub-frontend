@@ -6,6 +6,7 @@ import UserNavbar from './User/Navbar/UserNavbar';
 import MiniNavBar from './User/Navbar/MiniNavBar';
 import NavbarCategory from './User/Navbar/NavbarCategory';
 import MiniNavbarFooter from './User/Navbar/MiniNavbarFooter';
+import Footer from './User/Footer';
 
 function SearchProduct() {
 
@@ -109,6 +110,9 @@ function SearchProduct() {
                     )}
                 </div>
             </div>
+        </div>
+        <div>
+          <Footer/>
         </div>
         <div>
             {isMobile && <MiniNavbarFooter />}

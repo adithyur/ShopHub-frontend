@@ -6,6 +6,7 @@ import MiniNavBar from './User/Navbar/MiniNavBar';
 import UserHomeBody from './User/UserHomeBody';
 import Category from './User/Navbar/NavbarCategory';
 import MiniNavbarFooter from './User/Navbar/MiniNavbarFooter';
+import Footer from './User/Footer';
 
 
 function Home() {
@@ -21,7 +22,10 @@ function Home() {
         <Category/>
       </div>
       <div>
-          <UserHomeBody/>
+        <UserHomeBody/>
+      </div>
+      <div>
+        <Footer/>
       </div>
       <div>
         {isMobile && <MiniNavbarFooter />}      

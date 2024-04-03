@@ -30,6 +30,8 @@ import SearchProduct from './components/SearchProduct';
 import Category from './components/Category';
 import ProductType from './components/ProductType';
 import Latest from './components/Latest';
+import TopSale from './components/TopSale';
+import Footer from './components/User/Footer';
 
 import DarkMode from './components/DarkMode';
 
@@ -85,6 +87,8 @@ function App() {
           <Route path='/category' element={<Category/>}/>
           <Route path='/productype' element={<ProductType/>}/>
           <Route path='/latest' element={<Latest/>}/>
+          <Route path='/topsale' element={<TopSale/>}/>
+          <Route path='/footer' element={<Footer/>}/>
 
           <Route path='/adminhome' element={<AdminHome/>}/>
           <Route path='/manageproduct' element={<ManageProduct/>}/>

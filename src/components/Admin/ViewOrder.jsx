@@ -33,6 +33,7 @@ function ViewOrder() {
         try {
           const res = await axios.post('http://localhost:8000/api/order/viewOrder');
           setOrderHistory(res.data);
+          console.log("data : ",res.data)
         } catch (error) {
           console.error('Error fetching order history:', error);
         }
@@ -132,7 +133,7 @@ function ViewOrder() {
         </div>
         <div className='d-flex justify-content-center align-items-center main-form-div' /*style={{width:'100%'}}*/>        
         <div className='table-responsive mx-auto my-auto' style={{ maxHeight: '500px', overflowY: 'auto', overflowX: 'auto'}}>
-        <div className='order-search-box'>
+        {/* <div className='order-search-box'>
         <input
           type="text"
           placeholder="Search..."
@@ -142,8 +143,8 @@ function ViewOrder() {
         />
         <button className="order-search-button">Search</button>
 
-      </div>
-      <table className='verifierproduct_table'>
+      </div> */}
+      <table className='admin_product_table5'>
         <thead>
           <tr className='verifierproduct_tr'>
             <th className='verifierproduct_th'>Order Id</th>
@@ -155,22 +156,26 @@ function ViewOrder() {
           </tr>
         </thead>
         <tbody>
-          {filteredOrders.map((order, index) => (
-            <tr key={index} className='verifier_table_tr'>
-              <td className='verifierproduct_td'>
-                <a className='order-table-a' onClick={() => orderDetail(order.orderId)}>{order.orderId}</a>
-              </td>
-              <td className='verifierproduct_td'>{order.userid}</td>
-              <td className='verifierproduct_td'>{order.productid._id}</td>
-              <td className='verifierproduct_td'>₹{order.total}</td>
-              <td className='verifierproduct_td'>{order.status}</td>
-              <td>
-                {order.status === 'pending' ? (
-                  <button className="button-124" role="button" onClick={() => handleAction(order.orderid)}>APPROVE</button>
-                ) : null}
-              </td>
-            </tr>
-          ))}
+        {filteredOrders.map((order, index) => (
+  <tr key={index} className='verifier_table_tr'>
+    <td className='verifierproduct_td'>
+      <a className='order-table-a' onClick={() => orderDetail(order.orderId)}>{order.orderId}</a>
+    </td>
+    <td className='verifierproduct_td'>{order.userid}</td>
+    <td className='verifierproduct_td'>
+      {order.productid && typeof order.productid._id === 'string' ? order.productid._id.toLowerCase() : ''}
+    </td>
+    <td className='verifierproduct_td'>₹{order.total}</td>
+    <td className='verifierproduct_td'>{order.status}</td>
+    <td>
+      {order.status === 'pending' ? (
+        <button className="button-124" role="button" onClick={() => handleAction(order.orderid)}>APPROVE</button>
+      ) : null}
+    </td>
+  </tr>
+))}
+
+
         </tbody>
       </table>
 

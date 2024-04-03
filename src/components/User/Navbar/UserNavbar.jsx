@@ -80,9 +80,9 @@ function UserNavbar() {
 
   return (
     
-<div className='nav-bar-lg' data-theme={selectedTheme}>
-<div className='container' >
-  <div className='d-flex align-items-center justify-content-between nav-lg'>
+<div className='nav-bar-lg' data-theme={selectedTheme} style={{backgroundColor:'#E5E4E2'}}>
+<div className='container' style={{backgroundColor:'transparent'}}>
+  <div className='d-flex align-items-center justify-content-between nav-lg' style={{backgroundColor:'#E5E4E2'}}>
     <div className='col-lg-3 col-md-3 mt-1 justify-content-start d-flex nav-logo-lg-div'>
       <a href='/'>
         <img src='/logo2.png' alt='ShopHub Logo' className='nav-logo-lg' />

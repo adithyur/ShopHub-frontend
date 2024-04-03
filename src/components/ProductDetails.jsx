@@ -11,6 +11,10 @@ import { HiShoppingCart } from 'react-icons/hi';
 import { IoIosStar } from "react-icons/io";
 import { IoArrowRedoCircle } from 'react-icons/io5';
 import { BiUserCircle } from 'react-icons/bi';
+import { RiShoppingBag3Line } from 'react-icons/ri';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import Footer from './User/Footer';
 
 
 function ProductDetails() {
@@ -262,6 +266,22 @@ function ProductDetails() {
     setDeliveryDate(formattedDeliveryDate);
   }, []);
 
+  const orderclick = async () => {
+    const authid = localStorage.getItem('authid');
+    if (!authid) {
+      navigate('/login');
+    } else {
+      try {
+            const res=await axios.post('http://localhost:8000/api/cart/carts', { userid: authid, productid: productId });
+            if(res.status===202){
+              navigate('/cart');
+            }
+      } catch (error) {
+        console.error('Error updating cart:', error);
+      }
+    }
+  };
+
 
   return (
 <div>
@@ -354,19 +374,24 @@ function ProductDetails() {
         </div>
       </div>
     </div>
-          <div className="product-detail">
-            <div style={{ borderBottom: '1px solid rgb(225, 217, 217)', display: 'flex', flexDirection: 'row', height: '100px' }}>
+          <div className="product-detail" style={{ borderBottom: '1px solid rgb(225, 217, 217)'}}>
+            <div style={{ display: 'flex', flexDirection: 'row', height: '100px' }}>
               <div style={{ flexBasis: '80%' }}>
                 <h1 className='price' style={{ paddingLeft: '20px', paddingTop: '20px', textAlign:'left' }}> ₹ {product.price}</h1>
               </div>
               <div className='prd-dtl-day'>
-                {deliveryDate && (
-                  <p style={{ fontWeight: 'bold', fontFamily: 'inherit', paddingTop: '30px', textAlign: 'left !important' }}>
-                    Get it by: 2 days ( {deliveryDate} )
-                  </p>
-                )}
-              </div>
+        {deliveryDate && (
+          <p style={{ fontWeight: 'bold', fontFamily: 'inherit', paddingTop: '30px', textAlign: 'left !important' }}>
+            Get it by: 2 days ( {deliveryDate} )
+          </p>
+        )}
+      </div>
             </div>
+            <div className="buy-button" style={{ alignSelf: 'flex-end' }}>
+        <button className="btn btn-primary buy-btn" style={{fontWeight:'bold', borderColor:'transparent'}} onClick={orderclick}>
+          <RiShoppingBag3Line style={{ marginRight: '5px' }} /> Buy Now
+        </button>
+      </div>
           </div>
           <div>
               <div>
@@ -421,6 +446,9 @@ function ProductDetails() {
                 </div>
                 </div>
               </div>
+            </div>
+            <div>
+              <Footer/>
             </div>
             <div>
               {isMobile && <MiniNavbarFooter />}      

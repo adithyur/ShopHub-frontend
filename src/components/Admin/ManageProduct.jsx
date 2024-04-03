@@ -144,8 +144,8 @@ function ManageProduct() {
           </div>
         </div>
         <div className='d-flex justify-content-center align-items-center main-form-div' /*style={{width:'100%'}}*/>
-        <div className='table-responsive mx-auto my-auto' style={{ maxHeight: '500px', overflowY: 'auto', overflowX: 'auto'}}>
-  <table className='admin_product_table1'>
+        <div className='table-responsive my-auto' style={{ maxHeight: '500px', overflowY: 'auto', overflowX: 'auto', scrollbarWidth:'thin'}}>
+  <table className='admin_product_table4'>
     <thead>
       <tr className='verifierproduct_tr'>
         <th className='verifierproduct_th'>User Id</th>

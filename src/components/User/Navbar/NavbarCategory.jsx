@@ -14,6 +14,8 @@ import {CgSmartHomeWashMachine} from 'react-icons/cg' ;
 import {FiWatch} from 'react-icons/fi' ;
 import {AiOutlineLaptop} from 'react-icons/ai';
 import {MdSportsSoccer} from 'react-icons/md' ;
+import { FcSalesPerformance } from "react-icons/fc";
+
 
 function NavbarCategory() {
 
@@ -94,7 +96,7 @@ function NavbarCategory() {
   return (
     <div className='nav-bar-lg' data-theme={selectedTheme}>
 <div className='container' >
-<div className='d-flex align-items-center overflow-auto navbar-category' style={{ borderBottom: '1px solid rgb(214, 206, 206)!important' }}>
+<div className='d-flex align-items-center overflow-auto navbar-category' style={{ borderBottom: '1px solid rgb(214, 206, 206)!important' , scrollbarWidth:'thin', scrollBehavior:'smooth', scrollbarColor:'transparent transparent'}}>
     <div style={{ paddingLeft: '25px' }}>
       <a onClick={() => { navigate(`/category?category=${'mobile'}`); }} className='homeicon'>
         <CiMobile3 size={28} />
@@ -141,6 +143,12 @@ function NavbarCategory() {
             <MdSportsSoccer size={28}/>
             <br></br>
             <span className="text">Sports</span>
+          </a>
+
+          <a href='/topsale' className='homeicon2'>
+            <FcSalesPerformance size={28}/>
+            <br></br>
+            <span className="text">Top Sale</span>
           </a>
 
           </div>
