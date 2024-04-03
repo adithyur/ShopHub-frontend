@@ -68,7 +68,7 @@ function Payment() {
           date: currentDate,
         };
   
-        const transactionResponse = await axios.put(`http://localhost:8000/api/transaction/transaction/${orderId}`, dataToSend);
+        const transactionResponse = await axios.put(`https://shophub-backend.onrender.com/api/transaction/transaction/${orderId}`, dataToSend);
   
         if (transactionResponse.status === 201) {
           console.log('Transaction details saved successfully.');
@@ -76,11 +76,11 @@ function Payment() {
           
           if (transactionId) {
             console.log('Transaction ID:', transactionId);
-            const updateOrderResponse = await axios.put(`http://localhost:8000/api/order/unconfirmOrder/${orderId}`, { transactionId });
+            const updateOrderResponse = await axios.put(`https://shophub-backend.onrender.com/api/order/unconfirmOrder/${orderId}`, { transactionId });
             if (updateOrderResponse.status === 200) {
               console.log('Order status updated to confirmed.');
 
-              const deleteProductResponse = await axios.delete(`http://localhost:8000/api/cart/cart/${authid}/${productId}`);
+              const deleteProductResponse = await axios.delete(`https://shophub-backend.onrender.com/api/cart/cart/${authid}/${productId}`);
 
               if (deleteProductResponse.status === 200) {
                 console.log('Product deleted from the cart.');

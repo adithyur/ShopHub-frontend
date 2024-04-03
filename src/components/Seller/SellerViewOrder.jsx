@@ -28,7 +28,7 @@ function SellerViewOrder() {
     
       const fetchOrderHistory = async () => {
         try {
-          const res = await axios.post('http://localhost:8000/api/order/viewOrder');
+          const res = await axios.post('https://shophub-backend.onrender.com/api/order/viewOrder');
           setOrderHistory(res.data);
         } catch (error) {
           console.error('Error fetching order history:', error);
@@ -40,7 +40,7 @@ function SellerViewOrder() {
         if (orderId) {
             try{
               console.log('order id: ',orderId)
-              const updateOrderResponse = await axios.put(`http://localhost:8000/api/order/confirmOrders/${orderId}`);
+              const updateOrderResponse = await axios.put(`https://shophub-backend.onrender.com/api/order/confirmOrders/${orderId}`);
               if (updateOrderResponse.status === 200) {
                 console.log('Order status updated to confirmed.');
                 window.location.reload(); 

@@ -55,7 +55,7 @@ function EdtProduct() {
 
   const fetchProduct = async () => {
     try {
-      const res = await axios.post(`http://localhost:8000/api/products/display/${productId}`);
+      const res = await axios.post(`https://shophub-backend.onrender.com/api/products/display/${productId}`);
       setProduct(res.data);
     } catch (error) {
       console.error('Error fetching product:', error);
@@ -103,7 +103,7 @@ function EdtProduct() {
         formData.append('image5', product.image5);
       }
 
-      const res = await axios.put(`http://localhost:8000/api/products/updateproduct/${productId}`, formData, {
+      const res = await axios.put(`https://shophub-backend.onrender.com/api/products/updateproduct/${productId}`, formData, {
         headers: {
           'Content-Type': 'multipart/form-data',
         },

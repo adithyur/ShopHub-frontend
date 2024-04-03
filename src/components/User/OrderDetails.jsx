@@ -37,7 +37,7 @@ function OrderDetails() {
     
         const fetchOrderDetails = async () => {
           try {
-            const res = await axios.post(`http://localhost:8000/api/order/getOrderDetails/${orderId}`);
+            const res = await axios.post(`https://shophub-backend.onrender.com/api/order/getOrderDetails/${orderId}`);
             setOrderDetails(res.data);
           } catch (error) {
             console.error('Error fetching order details:', error);
@@ -50,7 +50,7 @@ function OrderDetails() {
     useEffect(() => {
         const fetchProduct = async () => {
           try {
-            const res = await axios.post(`http://localhost:8000/api/products/display/${productId}`);
+            const res = await axios.post(`https://shophub-backend.onrender.com/api/products/display/${productId}`);
             setProduct(res.data);
           } catch (error) {
             console.error('Error fetching product:', error);
@@ -63,7 +63,7 @@ function OrderDetails() {
     useEffect(() => {
         const fetchAverageRating = async () => {
           try {
-            const res = await axios.get(`http://localhost:8000/api/review/averagerating/${productId}`);
+            const res = await axios.get(`https://shophub-backend.onrender.com/api/review/averagerating/${productId}`);
             if (res.data) {
               setAverageRating(res.data.averageRating);
             }
@@ -83,7 +83,7 @@ function OrderDetails() {
       const fetchTransactionDetails = async () => {
         try {
           console.log("order id : ", orderId);
-          const res = await axios.get(`http://localhost:8000/api/transaction/getTransactionDetails/${orderId}`);
+          const res = await axios.get(`https://shophub-backend.onrender.com/api/transaction/getTransactionDetails/${orderId}`);
     
           if (res.data) {
             
@@ -103,7 +103,7 @@ function OrderDetails() {
 
     const handleMakePayment = async () => {
 
-      const res = await axios.get(`http://localhost:8000/api/transaction/getTransactionDetails/${orderId}`);
+      const res = await axios.get(`https://shophub-backend.onrender.com/api/transaction/getTransactionDetails/${orderId}`);
       const status= res.data.status;
       //console.log("Order status:",status);
       if (status=== 'unpaid') {
@@ -119,7 +119,7 @@ function OrderDetails() {
 
     const returnorcancel = async () => {
 
-      const res = await axios.post(`http://localhost:8000/api/order/getOrderDetails/${orderId}`);
+      const res = await axios.post(`https://shophub-backend.onrender.com/api/order/getOrderDetails/${orderId}`);
       const status= res.data.status;
       console.log("Order status:",status);
       if (status=== 'delivered') {
@@ -150,7 +150,7 @@ function OrderDetails() {
     };
 
     const handleCheck = async () => {
-      const res = await axios.get(`http://localhost:8000/api/transaction/getTransactionDetails/${orderId}`);
+      const res = await axios.get(`https://shophub-backend.onrender.com/api/transaction/getTransactionDetails/${orderId}`);
       const pay= res.data.mode;
       console.log('role : ',pay)
       if(pay==='cod'){

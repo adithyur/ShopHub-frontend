@@ -79,7 +79,7 @@ function AddProduct() {
         formData.image4 instanceof File ||
         formData.image5 instanceof File
       ) {
-        await axios.post('http://localhost:8000/api/products/addproduct', form, {
+        await axios.post('https://shophub-backend.onrender.com/api/products/addproduct', form, {
           headers: {
             'Content-Type': 'multipart/form-data',
           },

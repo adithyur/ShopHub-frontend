@@ -31,7 +31,7 @@ function OrderView() {
     
       const fetchOrderHistory = async () => {
         try {
-          const res = await axios.get(`http://localhost:8000/api/order/orders/${sellerId}`);
+          const res = await axios.get(`https://shophub-backend.onrender.com/api/order/orders/${sellerId}`);
           setOrderHistory(res.data);
         } catch (error) {
           console.error('Error fetching order history:', error);

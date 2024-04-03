@@ -68,7 +68,7 @@ const navigate = useNavigate();
           date: currentDate,
         };
   
-        const transactionResponse = await axios.post(`http://localhost:8000/api/transaction/cod`, dataToSend);
+        const transactionResponse = await axios.post(`https://shophub-backend.onrender.com/api/transaction/cod`, dataToSend);
    
         if (transactionResponse.status === 201) {
           console.log('Transaction details saved successfully.');
@@ -76,25 +76,25 @@ const navigate = useNavigate();
           
           if (transactionId) {
             console.log('Transaction ID:', transactionId);
-            const updateOrderResponse = await axios.put(`http://localhost:8000/api/order/unconfirmOrder/${orderId}`, { transactionId });
+            const updateOrderResponse = await axios.put(`https://shophub-backend.onrender.com/api/order/unconfirmOrder/${orderId}`, { transactionId });
             if (updateOrderResponse.status === 200) {
               console.log('waiting for admin approval.');
 
-              const deleteProductResponse = await axios.delete(`http://localhost:8000/api/cart/cart/${authid}/${productId}`);
+              const deleteProductResponse = await axios.delete(`https://shophub-backend.onrender.com/api/cart/cart/${authid}/${productId}`);
               if (deleteProductResponse.status === 200) {
                 console.log('Product deleted from the cart.');
               } else {
                 console.error('Error deleting product from the cart:', deleteProductResponse.data.message);
               }
 
-              const getOrderDetailsResponse = await axios.post(`http://localhost:8000/api/order/getOrderDetails/${orderId}`);
+              const getOrderDetailsResponse = await axios.post(`https://shophub-backend.onrender.com/api/order/getOrderDetails/${orderId}`);
 
               if (getOrderDetailsResponse.status === 200) {
                 const orderData = getOrderDetailsResponse.data.quantity;
                 const quantity = orderData;
                 console.log("Quantity from order:", quantity);
 
-                const updateQuantityResponse = await axios.put(`http://localhost:8000/api/products/updateQuantityminus/${productId}`, {
+                const updateQuantityResponse = await axios.put(`https://shophub-backend.onrender.com/api/products/updateQuantityminus/${productId}`, {
                   quantity: quantity,
                 });
 
@@ -139,7 +139,7 @@ const navigate = useNavigate();
           date: currentDate,
         };
   
-        const transactionResponse = await axios.post(`http://localhost:8000/api/transaction/createTransaction`, dataToSend);
+        const transactionResponse = await axios.post(`https://shophub-backend.onrender.com/api/transaction/createTransaction`, dataToSend);
   
         if (transactionResponse.status === 201) {
           console.log('Transaction details saved successfully.');
@@ -147,11 +147,11 @@ const navigate = useNavigate();
           
           if (transactionId) {
             console.log('Transaction ID:', transactionId);
-            const updateOrderResponse = await axios.put(`http://localhost:8000/api/order/unconfirmOrder/${orderId}`, { transactionId });
+            const updateOrderResponse = await axios.put(`https://shophub-backend.onrender.com/api/order/unconfirmOrder/${orderId}`, { transactionId });
             if (updateOrderResponse.status === 200) {
               console.log('waiting for admin approval.');
 
-              const deleteProductResponse = await axios.delete(`http://localhost:8000/api/cart/cart/${authid}/${productId}`);
+              const deleteProductResponse = await axios.delete(`https://shophub-backend.onrender.com/api/cart/cart/${authid}/${productId}`);
 
               if (deleteProductResponse.status === 200) {
                 console.log('Product deleted from the cart.');
@@ -159,14 +159,14 @@ const navigate = useNavigate();
                 console.error('Error deleting product from the cart:', deleteProductResponse.data.message);
               }
 
-              const getOrderDetailsResponse = await axios.post(`http://localhost:8000/api/order/getOrderDetails/${orderId}`);
+              const getOrderDetailsResponse = await axios.post(`https://shophub-backend.onrender.com/api/order/getOrderDetails/${orderId}`);
 
               if (getOrderDetailsResponse.status === 200) {
                 const orderData = getOrderDetailsResponse.data.quantity;
                 const quantity = orderData;
                 console.log("Quantity from order:", quantity);
 
-                const updateQuantityResponse = await axios.put(`http://localhost:8000/api/products/updateQuantityminus/${productId}`, {
+                const updateQuantityResponse = await axios.put(`https://shophub-backend.onrender.com/api/products/updateQuantityminus/${productId}`, {
                   quantity: quantity,
                 });
 

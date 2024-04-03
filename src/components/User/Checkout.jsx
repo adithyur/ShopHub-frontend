@@ -32,7 +32,7 @@ function Checkout() {
 
       const fetchBio = async () => {
         try {
-          const res = await axios.get(`http://localhost:8000/api/profile/profile/${localStorage.getItem('authid')}` );
+          const res = await axios.get(`https://shophub-backend.onrender.com/api/profile/profile/${localStorage.getItem('authid')}` );
           /*setFormFields(res.data)
           console.log(formFields)*/
           if(res){
@@ -86,10 +86,10 @@ function Checkout() {
         }
       else{
         console.log(bio)
-        const res = await axios.get(`http://localhost:8000/api/order/getOrderDetails/${localStorage.getItem('authid')}`);
+        const res = await axios.get(`https://shophub-backend.onrender.com/api/order/getOrderDetails/${localStorage.getItem('authid')}`);
         const orderId = res.data.orderId;
         console.log('order id : ',orderId)
-        await axios.post(`http://localhost:8000/api/order/profile/${orderId}`, bio)
+        await axios.post(`https://shophub-backend.onrender.com/api/order/profile/${orderId}`, bio)
         toast.success("Address Added successfully");
       }
     
@@ -105,7 +105,7 @@ function Checkout() {
 
   const fetchProducts = async () => {
     try {
-      const res = await axios.get(`http://localhost:8000/api/order/dsplywaiting/${localStorage.getItem('authid')}`);
+      const res = await axios.get(`https://shophub-backend.onrender.com/api/order/dsplywaiting/${localStorage.getItem('authid')}`);
       setProduct(res.data);
       console.log('Order ID: ', res.data);
     } catch (error) {
@@ -115,7 +115,7 @@ function Checkout() {
 
   const deleteOrders = async () => {
     try {
-      await axios.delete(`http://localhost:8000/api/order/delete/${localStorage.getItem('authid')}`, {
+      await axios.delete(`https://shophub-backend.onrender.com/api/order/delete/${localStorage.getItem('authid')}`, {
         params: { status: 'waiting for confirmation' },
       });
       console.log('Orders with status "waiting for confirmation" deleted.');
@@ -139,7 +139,7 @@ function Checkout() {
   const handleCheckout = async () => {
     try {
       console.log('Handle Checkout called');
-      const res = await axios.get(`http://localhost:8000/api/order/getOrderDetails/${localStorage.getItem('authid')}`);
+      const res = await axios.get(`https://shophub-backend.onrender.com/api/order/getOrderDetails/${localStorage.getItem('authid')}`);
       console.log(" address : ",res.data.address);
       if(res.data.address){
       const { orderId, productId } = res.data;

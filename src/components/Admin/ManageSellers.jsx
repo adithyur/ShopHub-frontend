@@ -33,7 +33,7 @@ function ManageSellers() {
 
       const fetchVerifier = async () => {
         try {
-          const res = await axios.post('http://localhost:8000/api/user/viewseller');
+          const res = await axios.post('https://shophub-backend.onrender.com/api/user/viewseller');
           console.log("data : ",res.data)
           setVerifier(res.data);
         } catch (error) {
@@ -43,7 +43,7 @@ function ManageSellers() {
     
       const deleteVerifier = async (userId) => {
         try {
-          await axios.delete(`http://localhost:8000/api/user/delete/${userId}`);
+          await axios.delete(`https://shophub-backend.onrender.com/api/user/delete/${userId}`);
           toast.success("seller removed successfully!");
           // Remove the deleted user from the users list
           setVerifier(verifier.filter(user => user._id !== userId));

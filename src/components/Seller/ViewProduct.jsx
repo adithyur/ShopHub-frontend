@@ -15,7 +15,7 @@ function ViewProduct() {
     const deleteProduct = async (productId) => {
     
       try {
-        await axios.delete(`http://localhost:8000/api/products/deleteproduct/${productId}`);
+        await axios.delete(`https://shophub-backend.onrender.com/api/products/deleteproduct/${productId}`);
         fetchproduct();
       } catch (error) {
         console.error('Error deleting product:', error);
@@ -29,7 +29,7 @@ function ViewProduct() {
 
 
     const fetchproduct=async()=>{
-      const res=await axios.get(`http://localhost:8000/api/products/getproductbyuserid/${localStorage.getItem('authid')}`)
+      const res=await axios.get(`https://shophub-backend.onrender.com/api/products/getproductbyuserid/${localStorage.getItem('authid')}`)
       setproduct(res.data)
       /*console.log(res.data)
       console.log(res.data.productName)*/

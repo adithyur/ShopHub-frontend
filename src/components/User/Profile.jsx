@@ -57,7 +57,7 @@ export default function Profile() {
         }
       else{
         console.log(formData)
-        await axios.post('http://localhost:8000/api/profile/profile', formData);
+        await axios.post('https://shophub-backend.onrender.com/api/profile/profile', formData);
         setFormData({ name: '', mobile1: '', pincode: '', place: '', address: '', city: '',state: '',landmark: '',mobile2: '' });
         alert(" successfully")
       }
@@ -72,7 +72,7 @@ export default function Profile() {
         const fetchUserName = async () => {
           try {
             console.log("user id : ",localStorage.getItem('authid'))
-            const res = await axios.get(`http://localhost:8000/api/user/getdetail/${localStorage.getItem('authid')}`);
+            const res = await axios.get(`https://shophub-backend.onrender.com/api/user/getdetail/${localStorage.getItem('authid')}`);
             const userData = res.data;
             console.log("data : ",userData)
             if (userData && userData.name) {

@@ -35,11 +35,11 @@ function Review() {
   useEffect(() => {
     const fetchProduct = async () => {
       try {
-        const res = await axios.post(`http://localhost:8000/api/products/display/${productId}`);
+        const res = await axios.post(`https://shophub-backend.onrender.com/api/products/display/${productId}`);
         console.log(' product : ', res);
         setProduct(res.data);
 
-        const userReviewResponse = await axios.get(`http://localhost:8000/api/review/display/${productId}/${userId}`);
+        const userReviewResponse = await axios.get(`https://shophub-backend.onrender.com/api/review/display/${productId}/${userId}`);
         if (userReviewResponse.data) {
           setRating(userReviewResponse.data.review);
           setComment(userReviewResponse.data.comments);
@@ -61,7 +61,7 @@ function Review() {
         return;
       }
 
-      const response = await axios.post('http://localhost:8000/api/review/create', {
+      const response = await axios.post('https://shophub-backend.onrender.com/api/review/create', {
         userid: localStorage.getItem('authid'),
         productid: productId,
         review: selectedRating,
@@ -89,7 +89,7 @@ function Review() {
         return;
       }
 
-      const res = await axios.post('http://localhost:8000/api/review/create', {
+      const res = await axios.post('https://shophub-backend.onrender.com/api/review/create', {
         userid: localStorage.getItem('authid'),
         productid: productId,
         review: rating,
@@ -108,7 +108,7 @@ function Review() {
   useEffect(() => {
     const fetchAverageRating = async () => {
       try {
-        const response = await axios.get(`http://localhost:8000/api/review/averagerating/${productId}`);
+        const response = await axios.get(`https://shophub-backend.onrender.com/api/review/averagerating/${productId}`);
         if (response.data) {
           setAverageRating(response.data.averageRating);
         }
@@ -123,7 +123,7 @@ function Review() {
   useEffect(() => {
     const fetchUserCount = async () => {
       try {
-        const response = await axios.get(`http://localhost:8000/api/review/usercount/${productId}`);
+        const response = await axios.get(`https://shophub-backend.onrender.com/api/review/usercount/${productId}`);
         if (response.data) {
           setUserCount(response.data.userCount);
         }

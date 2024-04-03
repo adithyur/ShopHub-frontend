@@ -18,7 +18,7 @@ function Latest() {
     useEffect(() => {
         const fetchLatestProducts = async () => {
           try {
-            const response = await axios.get('http://localhost:8000/api/products/latestProducts');
+            const response = await axios.get('https://shophub-backend.onrender.com/api/products/latestProducts');
             setLatestProducts(response.data.latestProducts);
           } catch (error) {
             console.error('Error fetching latest products:', error);

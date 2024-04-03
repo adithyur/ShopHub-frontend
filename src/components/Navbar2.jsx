@@ -47,7 +47,7 @@ function Navbar2() {
         const fetchUserName = async () => {
           try {
             console.log("user id : ",localStorage.getItem('authid'))
-            const res = await axios.get(`http://localhost:8000/api/user/getname/${localStorage.getItem('authid')}`);
+            const res = await axios.get(`https://shophub-backend.onrender.com/api/user/getname/${localStorage.getItem('authid')}`);
             const userData = res.data;
     
             if (userData && userData.username) {
@@ -67,7 +67,7 @@ function Navbar2() {
 
       const profile = async () => {
         try {
-          const response = await axios.get(`http://localhost:8000/api/user/getTrade/${localStorage.getItem('authid')}`);
+          const response = await axios.get(`https://shophub-backend.onrender.com/api/user/getTrade/${localStorage.getItem('authid')}`);
           
           if (!response.data) {
             console.error('Empty response from server');

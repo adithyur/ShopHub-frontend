@@ -29,7 +29,7 @@ function OrderUpdate() {
   
     const fetchOrders = async () => {
       try {
-        const res = await axios.get(`http://localhost:8000/api/order/orderdis/${sellerId}`);
+        const res = await axios.get(`https://shophub-backend.onrender.com/api/order/orderdis/${sellerId}`);
         setOrders(res.data.orders);
         console.log("data : ",res.data)
       } catch (error) {
@@ -43,7 +43,7 @@ function OrderUpdate() {
         console.log('status : ',newStatus)
         console.log('order id : ',orderId)
         try {
-          await axios.put(`http://localhost:8000/api/order/statusUpdate/${orderId}`, { status: newStatus });
+          await axios.put(`https://shophub-backend.onrender.com/api/order/statusUpdate/${orderId}`, { status: newStatus });
           toast.success('Order status updated successfully');
           fetchOrders();
           setNewStatus('');

@@ -34,7 +34,7 @@ function SellerHome() {
   useEffect(() => {
     const fetchProductCount = async () => {
       try {
-        const response = await axios.get(`http://localhost:8000/api/products/countProducts/${sellerid}`);
+        const response = await axios.get(`https://shophub-backend.onrender.com/api/products/countProducts/${sellerid}`);
         setProductCount(response.data.count);
       } catch (error) {
         console.error('Error fetching user count:', error);
@@ -47,7 +47,7 @@ function SellerHome() {
   useEffect(() => {
     const fetchCompletedOrdersCount = async () => {
       try {
-        const response = await axios.get(`http://localhost:8000/api/order/countCompletedOrders/${sellerid}`);
+        const response = await axios.get(`https://shophub-backend.onrender.com/api/order/countCompletedOrders/${sellerid}`);
         setCompletedOrdersCount(response.data.count);
       } catch (error) {
         console.error('Error fetching completed orders count:', error);
@@ -60,10 +60,10 @@ function SellerHome() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const newOrdersResponse = await axios.get(`http://localhost:8000/api/order/neworders/${sellerid}`);
+        const newOrdersResponse = await axios.get(`https://shophub-backend.onrender.com/api/order/neworders/${sellerid}`);
         setNewOrdersCount(newOrdersResponse.data.count);
 
-        const shippingOrdersResponse = await axios.get(`http://localhost:8000/api/order/Shipping/${sellerid}`);
+        const shippingOrdersResponse = await axios.get(`https://shophub-backend.onrender.com/api/order/Shipping/${sellerid}`);
         setShippingOrdersCount(shippingOrdersResponse.data.count);
       } catch (error) {
         console.error('Error fetching order counts:', error);

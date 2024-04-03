@@ -32,7 +32,7 @@ function AdminHome() {
   useEffect(() => {
     const fetchUserCount = async () => {
       try {
-        const response = await axios.get('http://localhost:8000/api/user/countUsers');
+        const response = await axios.get('https://shophub-backend.onrender.com/api/user/countUsers');
         setUserCount(response.data.count);
       } catch (error) {
         console.error('Error fetching user count:', error);
@@ -45,7 +45,7 @@ function AdminHome() {
   useEffect(() => {
     const fetchSellerCount = async () => {
       try {
-        const response = await axios.get('http://localhost:8000/api/user/countSeller');
+        const response = await axios.get('https://shophub-backend.onrender.com/api/user/countSeller');
         setSellerCount(response.data.count);
       } catch (error) {
         console.error('Error fetching seller count:', error);
@@ -58,7 +58,7 @@ function AdminHome() {
   useEffect(() => {
     const fetchCompletedOrdersCount = async () => {
       try {
-        const response = await axios.get('http://localhost:8000/api/order/countCompletedOrders');
+        const response = await axios.get('https://shophub-backend.onrender.com/api/order/countCompletedOrders');
         setCompletedOrdersCount(response.data.count);
       } catch (error) {
         console.error('Error fetching completed orders count:', error);
@@ -71,7 +71,7 @@ function AdminHome() {
   useEffect(() => {
     const fetchCompletedOrdersCountLastWeek = async () => {
       try {
-        const response = await axios.get('http://localhost:8000/api/order/countOrdersLastWeek');
+        const response = await axios.get('https://shophub-backend.onrender.com/api/order/countOrdersLastWeek');
         setCompletedOrdersCountLastWeek(response.data.count);
       } catch (error) {
         console.error('Error fetching completed orders count last week:', error);

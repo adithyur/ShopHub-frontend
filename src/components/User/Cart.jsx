@@ -32,7 +32,7 @@ function Cart() {
 
     const deleteProduct = async (productId) => {
         try {
-          await axios.delete(`http://localhost:8000/api/cart/cart/${authid}/${productId}`);
+          await axios.delete(`https://shophub-backend.onrender.com/api/cart/cart/${authid}/${productId}`);
           fetchproduct();
         } catch (error) {
           console.error('Error deleting product from cart:', error);
@@ -49,7 +49,7 @@ function Cart() {
     const [product,setproduct]= useState([])
 
     const fetchproduct=async()=>{
-        const res=await axios.get(`http://localhost:8000/api/cart/getcartbyuserid/${localStorage.getItem('authid')}`)
+        const res=await axios.get(`https://shophub-backend.onrender.com/api/cart/getcartbyuserid/${localStorage.getItem('authid')}`)
       setproduct(res.data)
       console.log(res.data)
     }
@@ -99,7 +99,7 @@ function Cart() {
     const productId = selectedProduct.productDetails._id;
   
     try {
-      const res = await axios.get(`http://localhost:8000/api/cart/quantity/${authid}/${productId}`);
+      const res = await axios.get(`https://shophub-backend.onrender.com/api/cart/quantity/${authid}/${productId}`);
       const cartData = res.data;
   
       if (!cartData) {
@@ -119,7 +119,7 @@ function Cart() {
       console.log(`Quantity for product ${productId}: ${cartData.quantity}`);
       console.log('Selected Order:', order);
   
-      const orderRes = await axios.post(`http://localhost:8000/api/order/place`, [order]);
+      const orderRes = await axios.post(`https://shophub-backend.onrender.com/api/order/place`, [order]);
       console.log('Order placed:', orderRes.data);
   
       navigate('/checkout');
@@ -141,7 +141,7 @@ function Cart() {
 
   const fetchOrderProducts = async () => {
     try {
-      const res = await axios.get(`http://localhost:8000/api/order/user/${localStorage.getItem('authid')}`);
+      const res = await axios.get(`https://shophub-backend.onrender.com/api/order/user/${localStorage.getItem('authid')}`);
       setOrderProducts(res.data);
     } catch (error) {
       console.error('Error fetching order products:', error);
@@ -166,7 +166,7 @@ return
       }
       else {
       const authid = localStorage.getItem('authid');
-      const res = await axios.get(`http://localhost:8000/api/cart/increment/${authid}/${productId}`);
+      const res = await axios.get(`https://shophub-backend.onrender.com/api/cart/increment/${authid}/${productId}`);
       const updatedCart = res.data.cart;
       console.log("quantity : ", updatedCart.quantity);
       console.log("productid : ",productId)
@@ -181,7 +181,7 @@ return
     e.preventDefault();
     try {
       const authid = localStorage.getItem('authid');
-      const res = await axios.get(`http://localhost:8000/api/cart/decrement/${authid}/${productId}`);
+      const res = await axios.get(`https://shophub-backend.onrender.com/api/cart/decrement/${authid}/${productId}`);
       const updatedCart = res.data.cart;
       console.log("quantity : ", updatedCart.quantity);
       console.log("productid : ",productId)
@@ -195,7 +195,7 @@ return
 
   const deleteOrders = async () => {
     try {
-      await axios.delete(`http://localhost:8000/api/order/delete/${localStorage.getItem('authid')}`, {
+      await axios.delete(`https://shophub-backend.onrender.com/api/order/delete/${localStorage.getItem('authid')}`, {
         params: { status: 'waiting for confirmation' },
       });
       console.log('Orders with status "waiting for confirmation" deleted.');

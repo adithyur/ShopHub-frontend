@@ -35,7 +35,7 @@ function Login() {
     e.preventDefault();
     try {
       console.log(formData);
-      const response = await axios.post('http://localhost:8000/api/user/login', formData);
+      const response = await axios.post('https://shophub-backend.onrender.com/api/user/login', formData);
 
       console.log(response.data);
       if (response) {
@@ -96,7 +96,7 @@ function Login() {
     try {
       if (formDataReg.password === formDataReg.repassword) {
         console.log(formDataReg);
-        await axios.post('http://localhost:8000/api/user/reguser', formDataReg);
+        await axios.post('https://shophub-backend.onrender.com/api/user/reguser', formDataReg);
         setFormDataReg({
           name: '',
           email: '',

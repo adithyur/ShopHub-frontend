@@ -40,7 +40,7 @@ function MiniNavBar() {
     const fetchUserName = async () => {
       try {
         console.log('user id : ', localStorage.getItem('authid'));
-        const res = await axios.get(`http://localhost:8000/api/user/getname/${localStorage.getItem('authid')}`);
+        const res = await axios.get(`https://shophub-backend.onrender.com/api/user/getname/${localStorage.getItem('authid')}`);
         const userData = res.data;
 
         if (userData && userData.username) {

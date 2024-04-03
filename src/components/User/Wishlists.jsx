@@ -28,7 +28,7 @@ function Wishlists() {
   const deleteProduct = async (productId) => {
     const authid = localStorage.getItem('authid');
     try {
-      await axios.delete(`http://localhost:8000/api/wishlist/wishlist/${authid}/${productId}`);
+      await axios.delete(`https://shophub-backend.onrender.com/api/wishlist/wishlist/${authid}/${productId}`);
       fetchProduct();
     } catch (error) {
       console.error('Error deleting product from wishlist:', error);
@@ -37,7 +37,7 @@ function Wishlists() {
 
   const fetchProduct = async () => {
     try {
-      const res = await axios.get(`http://localhost:8000/api/wishlist/getwishlistbyuserid/${localStorage.getItem('authid')}`);
+      const res = await axios.get(`https://shophub-backend.onrender.com/api/wishlist/getwishlistbyuserid/${localStorage.getItem('authid')}`);
       setProduct(res.data);
       console.log(res.data);
     } catch (error) {

@@ -27,7 +27,7 @@ function Order() {
 
   const fetchOrderHistory = async () => {
     try {
-      const res = await axios.post(`http://localhost:8000/api/order/getorderbyuserid/${localStorage.getItem('authid')}`);
+      const res = await axios.post(`https://shophub-backend.onrender.com/api/order/getorderbyuserid/${localStorage.getItem('authid')}`);
       setOrderHistory(res.data);
     } catch (error) {
       console.error('Error fetching order history:', error);
@@ -51,7 +51,7 @@ function Order() {
   };
 
   const handleCheck = async () => {
-    const res = await axios.get(`http://localhost:8000/api/user/userdetail/${localStorage.getItem('authid')}`);
+    const res = await axios.get(`https://shophub-backend.onrender.com/api/user/userdetail/${localStorage.getItem('authid')}`);
     const role= res.data.trade;
     console.log('role : ',role)
     if(role==='sell'){

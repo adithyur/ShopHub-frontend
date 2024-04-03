@@ -26,7 +26,7 @@ function SellerOrderDetails() {
         const fetchOrderDetails = async () => {
           console.log('orderid : ',orderId)
           try {
-            const response = await axios.get(`http://localhost:8000/api/order/orderdetails/${orderId}`);
+            const response = await axios.get(`https://shophub-backend.onrender.com/api/order/orderdetails/${orderId}`);
             setOrderDetails(response.data);
           } catch (error) {
             console.error('Error fetching order details:', error);

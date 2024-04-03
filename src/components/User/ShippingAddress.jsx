@@ -38,7 +38,7 @@ function ShippingAddress() {
 
   const fetchBio = async () => {
         try {
-          const res = await axios.get(`http://localhost:8000/api/profile/profile/${localStorage.getItem('authid')}`);
+          const res = await axios.get(`https://shophub-backend.onrender.com/api/profile/profile/${localStorage.getItem('authid')}`);
           /*setFormFields(res.data)
           console.log(formFields)*/
           if(res){
@@ -83,7 +83,7 @@ function ShippingAddress() {
       }
       else{
         console.log(bio)
-        await axios.post(`http://localhost:8000/api/profile/update/${localStorage.getItem('authid')}`, bio)
+        await axios.post(`https://shophub-backend.onrender.com/api/profile/update/${localStorage.getItem('authid')}`, bio)
         toast.success("Address Added successfully");
       }   
     } catch (error) {

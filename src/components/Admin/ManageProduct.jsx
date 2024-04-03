@@ -27,7 +27,7 @@ function ManageProduct() {
     useEffect(() => {
         const fetchProducts = async () => {
           try {
-            const response = await axios.get('http://localhost:8000/api/products/getproduct');
+            const response = await axios.get('https://shophub-backend.onrender.com/api/products/getproduct');
             setProducts(response.data);
           } catch (error) {
             console.error('Error fetching products:', error);
@@ -51,7 +51,7 @@ function ManageProduct() {
       if (productId) {
         if (action === 'delete') {
           try{
-            await axios.delete(`http://localhost:8000/api/products/deleteproduct/${productId}`);
+            await axios.delete(`https://shophub-backend.onrender.com/api/products/deleteproduct/${productId}`);
             toast.success("Product Removed successful!");
             console.log('Deleting product:', productId);
             window.location.reload(); 
@@ -62,7 +62,7 @@ function ManageProduct() {
           }
         } else if (action === 'approve') {
           try{
-            await axios.put(`http://localhost:8000/api/products/updateStatus/${productId}`);
+            await axios.put(`https://shophub-backend.onrender.com/api/products/updateStatus/${productId}`);
             toast.success("Product Approved successful!");
             console.log('Approving product:', productId);
             window.location.reload(); 
@@ -76,7 +76,7 @@ function ManageProduct() {
           if (reason !== null) {
             try {
               const updatedProduct = { status: 'rejected', reason };
-              await axios.put(`http://localhost:8000/api/products/unupdate/${productId}`, updatedProduct);
+              await axios.put(`https://shophub-backend.onrender.com/api/products/unupdate/${productId}`, updatedProduct);
               toast.success("Product declined successful!");
               window.location.reload(); 
             } catch (error) {

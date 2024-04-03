@@ -22,11 +22,11 @@ function TopSale() {
 
   const fetchTopSaleProducts = async () => {
     try {
-      const res = await axios.get('http://localhost:8000/api/order/top-sale-products');
+      const res = await axios.get('https://shophub-backend.onrender.com/api/order/top-sale-products');
       
       const productsWithRatings = await Promise.all(
         res.data.map(async (product) => {
-          const ratingRes = await axios.get(`http://localhost:8000/api/review/getProductReviews/${product._id}`);
+          const ratingRes = await axios.get(`https://shophub-backend.onrender.com/api/review/getProductReviews/${product._id}`);
           console.log('Rating Response:', ratingRes.data);
           return {
             ...product,

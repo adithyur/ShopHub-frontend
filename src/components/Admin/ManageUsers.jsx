@@ -26,7 +26,7 @@ function ManageUsers() {
 
   const fetchUsers = async () => {
     try {
-      const res = await axios.post('http://localhost:8000/api/user/viewuser');
+      const res = await axios.post('https://shophub-backend.onrender.com/api/user/viewuser');
       setUsers(res.data);
     } catch (error) {
       console.error('Error fetching users:', error);
@@ -35,7 +35,7 @@ function ManageUsers() {
 
   const deleteUser = async (userId) => {
     try {
-      await axios.delete(`http://localhost:8000/api/user/delete/${userId}`);
+      await axios.delete(`https://shophub-backend.onrender.com/api/user/delete/${userId}`);
       toast.success("user removed successfully!");
       // Remove the deleted user from the users list
       setUsers(users.filter(user => user._id !== userId));

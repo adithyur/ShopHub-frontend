@@ -84,9 +84,9 @@ function ProductDetails() {
     } else {
       try {
         if (isSaved) {
-          await axios.delete(`http://localhost:8000/api/wishlist/delete/${authid}/${productId}`);
+          await axios.delete(`https://shophub-backend.onrender.com/api/wishlist/delete/${authid}/${productId}`);
         } else {
-          await axios.post('http://localhost:8000/api/wishlist/add', { userid: authid, productid: productId });
+          await axios.post('https://shophub-backend.onrender.com/api/wishlist/add', { userid: authid, productid: productId });
         }
         setIsSaved(!isSaved);
       } catch (error) {
@@ -101,7 +101,7 @@ function ProductDetails() {
       navigate('/login');
     } else {
       try {
-            const res=await axios.post('http://localhost:8000/api/cart/carts', { userid: authid, productid: productId });
+            const res=await axios.post('https://shophub-backend.onrender.com/api/cart/carts', { userid: authid, productid: productId });
             if(res.status===202){
               console.log('isCart:', isCart);
               setIsCart(!isCart);
@@ -115,7 +115,7 @@ function ProductDetails() {
   useEffect(() => {
     const fetchProduct = async () => {
       try {
-        const res = await axios.post(`http://localhost:8000/api/products/display/${productId}`);
+        const res = await axios.post(`https://shophub-backend.onrender.com/api/products/display/${productId}`);
         console.log(' product : ',res)
         setProduct(res.data);
       } catch (error) {
@@ -131,7 +131,7 @@ function ProductDetails() {
     if (authid) {
       const fetchWishlistStatus = async () => {
         try {
-          const res = await axios.get(`http://localhost:8000/api/wishlist/wishlist/${authid}/${productId}`);
+          const res = await axios.get(`https://shophub-backend.onrender.com/api/wishlist/wishlist/${authid}/${productId}`);
           setIsSaved(res.data.exists);
         } catch (error) {
           console.error('Error fetching wishlist status:', error);
@@ -147,7 +147,7 @@ function ProductDetails() {
     if (authid) {
       const fetchcartStatus = async () => {
         try {
-          const res = await axios.get(`http://localhost:8000/api/cart/cart/${authid}/${productId}`);
+          const res = await axios.get(`https://shophub-backend.onrender.com/api/cart/cart/${authid}/${productId}`);
           setIsCart(res.data.exists);
         } catch (error) {
           console.error('Error fetching cart status:', error);
@@ -198,7 +198,7 @@ function ProductDetails() {
   useEffect(() => {
     const fetchAverageRating = async () => {
       try {
-        const response = await axios.get(`http://localhost:8000/api/review/averagerating/${productId}`);
+        const response = await axios.get(`https://shophub-backend.onrender.com/api/review/averagerating/${productId}`);
         if (response.data) {
           setAverageRating(response.data.averageRating);
         }
@@ -213,7 +213,7 @@ function ProductDetails() {
   useEffect(() => {
     const fetchUserCount = async () => {
       try {
-        const response = await axios.get(`http://localhost:8000/api/review/usercount/${productId}`);
+        const response = await axios.get(`https://shophub-backend.onrender.com/api/review/usercount/${productId}`);
         if (response.data) {
           setUserCount(response.data.userCount);
         }
@@ -228,7 +228,7 @@ function ProductDetails() {
   useEffect(() => {
     const fetchReviews = async () => {
       try {
-        const response = await axios.get(`http://localhost:8000/api/review/reviewproduct/${productId}`);
+        const response = await axios.get(`https://shophub-backend.onrender.com/api/review/reviewproduct/${productId}`);
         if (response.data) {
           setReviews(response.data);
         }
@@ -244,7 +244,7 @@ function ProductDetails() {
     async function fetchStarCounts() {
       try {
         console.log("product id  : ",productId)
-        const res = await axios.get(`http://localhost:8000/api/review/eachstar/${productId}`);
+        const res = await axios.get(`https://shophub-backend.onrender.com/api/review/eachstar/${productId}`);
         console.log("rating : ",res)
         setStarCounts(res.data);
       } catch (error) {
@@ -272,7 +272,7 @@ function ProductDetails() {
       navigate('/login');
     } else {
       try {
-            const res=await axios.post('http://localhost:8000/api/cart/carts', { userid: authid, productid: productId });
+            const res=await axios.post('https://shophub-backend.onrender.com/api/cart/carts', { userid: authid, productid: productId });
             if(res.status===202){
               navigate('/cart');
             }

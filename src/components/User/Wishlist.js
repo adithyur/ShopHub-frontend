@@ -16,7 +16,7 @@ function Wishlist() {
   const deleteProduct = async (productId) => {
     const authid = localStorage.getItem('authid');
     try {
-      await axios.delete(`http://localhost:8000/api/wishlist/wishlist/${authid}/${productId}`);
+      await axios.delete(`https://shophub-backend.onrender.com/api/wishlist/wishlist/${authid}/${productId}`);
       fetchProduct();
     } catch (error) {
       console.error('Error deleting product from wishlist:', error);
@@ -25,7 +25,7 @@ function Wishlist() {
 
   const fetchProduct = async () => {
     try {
-      const res = await axios.get(`http://localhost:8000/api/wishlist/getwishlistbyuserid/${localStorage.getItem('authid')}`);
+      const res = await axios.get(`https://shophub-backend.onrender.com/api/wishlist/getwishlistbyuserid/${localStorage.getItem('authid')}`);
       setProduct(res.data);
       console.log(res.data);
     } catch (error) {
@@ -65,7 +65,7 @@ function Wishlist() {
           {product.map((wishlist, index) => (
             <div className='col-lg-4 col-md-6 col-sm-12' key={index}>
               <div className='card mb-4' onClick={() => handleCardClick(wishlist.productDetails._id)}>
-                <img className='card-img-top' src={`http://localhost:8000/${wishlist.productDetails.image}`} alt='Card' style={{ height: '250px' }} />
+                <img className='card-img-top' src={`https://shophub-backend.onrender.com/${wishlist.productDetails.image}`} alt='Card' style={{ height: '250px' }} />
                 <div className='card-body'>
                   <h5 className='card-title'>{wishlist.productDetails.productName}</h5>
                   <p className='card-text'>₹{wishlist.productDetails.price}</p>
