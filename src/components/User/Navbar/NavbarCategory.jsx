@@ -145,7 +145,7 @@ function NavbarCategory() {
             <span className="text">Sports</span>
           </a>
 
-          <a href='/topsale' className='homeicon2'>
+          <a href='/topsale' className='homeicon3'>
             <FcSalesPerformance size={28}/>
             <br></br>
             <span className="text">Top Sale</span>

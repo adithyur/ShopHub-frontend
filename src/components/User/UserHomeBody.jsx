@@ -64,10 +64,11 @@ function UserHomeBody() {
       <div className='card-body d-flex'>
         <h5 className='text-left' style={{textAlign:'left'}}>{cardData.productName}</h5>
       </div>
-      <div className='d-flex justify-content-between' style={{marginTop:'-5px'}}>
-        <p className='col-lg-11 col-md-11 col-sm-11' style={{ textAlign: 'left', paddingLeft: '1%', fontSize: 'larger' }}>₹{cardData.price}</p>
-        <p className={`col-lg-1 col-md-1 col-sm-1 ${selectedTheme === 'dark' ? 'order-1' : ''}`} style={{ textAlign: 'right', fontSize:'18px' }}>{cardData.rating}★</p>
-      </div>
+      <p className={`card-rtng ${selectedTheme === 'dark' ? 'order-1' : ''}`} style={{  fontSize:'18px' }}>{cardData.rating}★</p>
+      <p style={{ textAlign: 'left', paddingLeft: '1%', fontSize: 'larger' }}>₹{cardData.price}</p>
+      {/* <div>
+        <p style={{ textAlign: 'left', paddingLeft: '1%', fontSize: 'larger' }}>₹{cardData.price}</p>
+      </div> */}
     </div>
   </div>
 ))}

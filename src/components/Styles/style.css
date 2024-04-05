@@ -317,7 +317,7 @@
 }
 
 .pnav{
-  color: orangered;
+  color: #fff;
   font-weight: bold;
   font-size: 20px;
   padding-left: 25px;
@@ -325,16 +325,16 @@
 }
 
 .pnav:hover, .pnav-icon:hover {
-  color: rgb(207, 62, 9);
+  color: lightgray;
 }
 
 .pnav-icon {
-  fill: orangered;
+  fill: #fff;
 }
 
 .search-div{
   border-radius: 20px;
-  border: 1px solid gray;
+  border: 1px solid rgb(250, 244, 244);
   width: 75px;
   height: 45px;
   padding-left: 1px;
@@ -345,9 +345,13 @@
 }
 
 .nav-item2 {
-  color: var(--nav-option);
-  border-right: 1px solid #4F4F4A ;
+  color: white;
+  border-right: 1px solid #5a8cf0;
   font-weight: bold;
+}
+
+.srch-plchldr::placeholder{
+  color: #fff;
 }
 
 .nav-item2:hover{
@@ -378,11 +382,13 @@
   cursor: pointer;
 }
 
-.homeicon, .homeicon2{
+.homeicon, .homeicon2, .homeicon3{
   padding-left: 7%;
   font-weight: bold;
   font-size: 15px;
   text-decoration: none ;
+  /* color: #393737; */
+  color: #c7bcbc;
 }
 
 input:focus {
@@ -390,7 +396,11 @@ input:focus {
 }
 
 .homeicon:hover, .homeicon2:hover{
-  color: var(--cat-hover);
+  color: #5a8cf0;
+}
+
+.homeicon3:hover{
+color: goldenrod ;
 }
 
 
@@ -399,6 +409,12 @@ input:focus {
 
 .home-card-img{
   border-radius: 10px;
+}
+
+.card-rtng{
+  background-color: green;
+  border-radius: 10px;
+  color: #fff;
 }
 
 

@@ -80,9 +80,9 @@ function UserNavbar() {
 
   return (
     
-<div className='nav-bar-lg' data-theme={selectedTheme} style={{backgroundColor:'#E5E4E2'}}>
+<div className='nav-bar-lg' data-theme={selectedTheme} style={{backgroundColor:'#2a55e5'}}>
 <div className='container' style={{backgroundColor:'transparent'}}>
-  <div className='d-flex align-items-center justify-content-between nav-lg' style={{backgroundColor:'#E5E4E2'}}>
+  <div className='d-flex align-items-center justify-content-between nav-lg' >
     <div className='col-lg-3 col-md-3 mt-1 justify-content-start d-flex nav-logo-lg-div'>
       <a href='/'>
         <img src='/logo2.png' alt='ShopHub Logo' className='nav-logo-lg' />
@@ -102,12 +102,13 @@ function UserNavbar() {
             onClick={handleInputClick}
             onBlur={handleInputBlur}
             placeholder="Find your items"
+            className='srch-plchldr'
             style={{
                 border: 'none',
                 borderRadius: '5px',
                 padding: '8px',
                 flex: 1,
-                color:'gray',
+                color:'#fff',
                 marginRight: '5px',
                 userSelect: 'none' ,
                 outline: 'none',
@@ -120,7 +121,7 @@ function UserNavbar() {
                 padding: '8px',
                 borderRadius: '5px',
                 cursor: 'pointer',
-                color: 'orangered',
+                color: '#fff',
               
             }}
             onClick={searchProduct}
@@ -140,7 +141,7 @@ function UserNavbar() {
           <AiFillHeart size={24} className='pnav-icon'/> Wishlist
         </a>
         <a className='pnav' onClick={profile}>
-                <FaUser size={22} className='pnav-icon' style={{ color: 'initial' }} /> { userName }
+                <FaUser size={22} className='pnav-icon' style={{ color: '#fff' }} /> { userName }
               </a></>
            )}
 
