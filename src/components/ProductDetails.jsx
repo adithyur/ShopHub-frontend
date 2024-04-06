@@ -13,6 +13,7 @@ import { IoArrowRedoCircle } from 'react-icons/io5';
 import { BiUserCircle } from 'react-icons/bi';
 import { RiShoppingBag3Line } from 'react-icons/ri';
 import { ToastContainer, toast } from 'react-toastify';
+import { MdOutlineRateReview } from "react-icons/md";
 import 'react-toastify/dist/ReactToastify.css';
 import Footer from './User/Footer';
 
@@ -25,6 +26,7 @@ function ProductDetails() {
   const [showUser, setShowUser] = useState(false);
   const [showUser1, setShowUser1] = useState(false);
   const [product, setProduct] = useState({});
+  const [oldPrice,setOldPrice] = useState(0);
   const [userCount, setUserCount] = useState(0);
   const [reviews, setReviews] = useState([]);
   const [averageRating, setAverageRating] = useState(0);
@@ -116,8 +118,13 @@ function ProductDetails() {
     const fetchProduct = async () => {
       try {
         const res = await axios.post(`https://shophub-backend.onrender.com/api/products/display/${productId}`);
+        const price=parseInt(product.price)
+        const offer = parseInt(product.offer)
+        const discount= Math.floor(price* (offer)/100)
+        const oldPrice= price + discount
         console.log(' product : ',res)
         setProduct(res.data);
+        setOldPrice(oldPrice);
       } catch (error) {
         console.error('Error fetching product:', error);
       }
@@ -290,33 +297,35 @@ function ProductDetails() {
     </div>
     <div className='product-details' data-theme={selectedTheme}>
         <div className='container'>
-          <div className='d-flex col-sm-12 col-md-12 col-lg-12 productdiv8'>
-            <div className='d-flex align-items-center justify-content-left col-sm-9 col-md-9 col-lg-9 product-name'>
-              <h2 className='h1h1 mt-3 ms-3'>{product.productName}</h2>
+          <div className='d-flex col-sm-12 col-md-12 col-lg-12 product-detail-header'>
+            <div className='d-flex align-items-center justify-content-left mb-4 col-sm-9 col-md-9 col-lg-9 product-name'>
+              <h2 className='h1h1 ms-3'>{product.productName}</h2>
             </div>
             <div className='col-sm-3 col-md-3 col-lg-3 mt-3 d-flex justify-content-end product-header'>
               <div className='share-cart-wishlist'>
-                <a className='mx-3 share-button' onClick={() => { handleShare(product._id, product.productName) }}>
-                  <IoArrowRedoCircle size={26} />
+                <a className='share-button' onClick={() => { handleShare(product._id, product.productName) }}>
+                  <IoArrowRedoCircle className='share-icon' />
                   Share
                 </a>
-                <button className="cart-button mx-3" onClick={handleCartClick} >
-                  <span className='cart-el'><HiShoppingCart style={{ color: isCart ? 'blue' : 'black', fontSize: isCart ? '20px' : '20px' }}/>
-                  <span className="cartbutton-text" style={{ color: isCart ? 'blue' : 'black', fontSize: isCart ? '20px' : '20px' }}>Cart</span>
+                <button className="cart-button" onClick={handleCartClick}>
+                  <span className='cart-el'>
+                    <HiShoppingCart className='cart-icon' style={{ color: isCart ? 'blue' : (selectedTheme === 'dark' ? 'white' : 'black') }} />
+                    <span className="cartbutton-text" style={{ color: isCart ? 'blue' : (selectedTheme === 'dark' ? 'white' : 'black')}}>Cart</span>
                   </span>
                 </button>
-                <button className={`mx-3 wishlist-button`} onClick={handleButtonClick} >
-                  <span className='wishlist-el' >  <FontAwesomeIcon icon={faHeart} style={{color: isSaved ? 'red' : 'black'}}  />
-                  <span className="wishlistbutton-text" style={{color: isSaved ? 'red' : 'black'}}>{isSaved ? 'Saved' : 'Save'} </span></span>
+
+                <button className={`wishlist-button`} onClick={handleButtonClick} >
+                  <span className='wishlist-el' >  <FontAwesomeIcon icon={faHeart} style={{color: isSaved ? 'red' : (selectedTheme === 'dark' ? 'white' : 'black'),}}  />
+                  <span className="wishlistbutton-text" style={{color: isSaved ? 'red' : (selectedTheme === 'dark' ? 'white' : 'black'),}}>{isSaved ? 'Saved' : 'Save'} </span></span>
                 </button>
               </div>
             </div>
           </div>
-          <div className='col-sm-1 col-md-1 col-lg-1'>
+          {/* <div className='col-sm-1 col-md-1 col-lg-1'>
             <div className='product-rating'>
                 <h2>{averageRating} ★ </h2>
             </div>
-          </div>
+          </div> */}
           <div className='responsive-gallery'>
       {/* <div className='gallery-item'>
         <img className='gallery-img' src={product.image} alt='Product' />
@@ -374,10 +383,12 @@ function ProductDetails() {
         </div>
       </div>
     </div>
-          <div className="product-detail" style={{ borderBottom: '1px solid rgb(225, 217, 217)'}}>
+          <div className="product-detail" style={{ borderBottom: '1px solid rgb(225, 217, 217)', }}>
             <div style={{ display: 'flex', flexDirection: 'row', height: '100px' }}>
-              <div style={{ flexBasis: '80%' }}>
+              <div className='d-flex' style={{ flexBasis: '80%' }}>
                 <h1 className='price' style={{ paddingLeft: '20px', paddingTop: '20px', textAlign:'left' }}> ₹ {product.price}</h1>
+                <p className='card-offer ps-3 pt-4'style={{fontSize:'24px', textDecoration:'line-through', color:'gray'}}>₹{oldPrice}</p>
+                <p className='pt-4 ps-2 text-success' style={{fontSize:'25px', fontWeight:'bold'}}>{product.offer}% off</p>
               </div>
               <div className='prd-dtl-day'>
         {deliveryDate && (
@@ -387,8 +398,8 @@ function ProductDetails() {
         )}
       </div>
             </div>
-            <div className="buy-button" style={{ alignSelf: 'flex-end' }}>
-        <button className="btn btn-primary buy-btn" style={{fontWeight:'bold', borderColor:'transparent'}} onClick={orderclick}>
+            <div className="buy-button" style={{ display: 'flex', justifyContent: 'flex-end' }}>
+        <button className="btn btn-primary buy-btn mb-3" style={{fontWeight:'bold',background:'#2a55e5', borderColor:'transparent'}} onClick={orderclick}>
           <RiShoppingBag3Line style={{ marginRight: '5px' }} /> Buy Now
         </button>
       </div>
@@ -408,12 +419,13 @@ function ProductDetails() {
                       </div>
                   <div>
                     <div style={{borderBottom:'1px solid rgb(225, 217, 217)'}}>
-                      <button onClick={rateProduct} style={{border:'none', backgroundColor:'transparent', fontWeight:'bold', color:'green' ,fontFamily:'time new roman', fontSize:'18px'}}>RATE PRODUCT ?</button>
+                      <button onClick={rateProduct} style={{border:'none', backgroundColor:'orange', fontWeight:'bold', color:'white' ,fontFamily:'time new roman', fontSize:'18px'}}>
+                      <MdOutlineRateReview />RATE PRODUCT ?</button>
                       <h1 style={{ textAlign:'left', paddingLeft:'20px'}}>Ratings & Reviews</h1>
                       <div style={{display:'flex', width:'60%', marginLeft:'50px'}}>
                           <div>
                           <p style={{textAlign:'left', paddingTop:'25px', fontWeight:'bold'}}>Average Rating</p>
-                          <h1 style={{ color:'red', textAlign:'left', borderRadius:'10px'}}>{averageRating} <IoIosStar style={{color:'red', fontSize:'32px', paddingBottom:'5px'}}/>  </h1>
+                          <h1 className='prd-dtl-ratng' style={{ textAlign:'left', borderRadius:'10px'}}>{averageRating} <IoIosStar style={{color:'gold', fontSize:'32px', paddingBottom:'5px'}}/>  </h1>
                           <p >        
                             Total users who rated the product: {userCount}
                           </p>
@@ -423,16 +435,18 @@ function ProductDetails() {
                     <div style={{borderTop:'1px solid rgb(225, 217, 217)'}}>
                     <div style={{marginLeft:'50px',marginTop:'50px', textAlign:'left', marginTop:'40px'}}>
                     {reviews.map((review) => (
-            <div key={review._id} style={{borderBottom:'1px solid rgb(225, 217, 217)'}}>
+            <div key={review._id} style={{borderBottom:'1px solid rgb(225, 217, 217)',marginLeft:'-50px'}}>
             <div style={{display:'flex', marginTop:'20px'}}>
               <div>
                 <BiUserCircle size={40} style={{paddingTop:'5px', fontWeight:'lighter'}}/>
               </div>
               <div>
                 <p style={{fontSize:'18px', paddingLeft:'5px'}}> {review.user}</p>
-                <p style={{marginTop:'-10px', paddingLeft:'5px', fontSize:'15px'}}>
-                {review.rating}★
-                </p>
+                <div style={{marginLeft:'5px' ,backgroundColor:'green', borderRadius:'10px', width:'40px'}}>
+                  <p style={{marginTop:'-10px',fontSize:'16px', paddingLeft:'10px'}}>
+                    {review.rating}★
+                  </p>
+                </div>
             </div>
             </div>
           
@@ -450,10 +464,10 @@ function ProductDetails() {
             <div>
               <Footer/>
             </div>
+            </div>
+            </div>
             <div>
               {isMobile && <MiniNavbarFooter />}      
-            </div>
-            </div>
             </div>
       </div>
   )

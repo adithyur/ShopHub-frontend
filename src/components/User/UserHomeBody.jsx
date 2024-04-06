@@ -16,19 +16,32 @@ function UserHomeBody() {
   const fetchProducts = async () => {
     try {
       const res = await axios.post(`https://shophub-backend.onrender.com/api/products/veproducts`);
-      console.log('Products:', res.data);
-
+      //console.log('Products:', res.data);
+  
       const productsWithRatings = await Promise.all(
         res.data.map(async (product) => {
           const ratingRes = await axios.get(`https://shophub-backend.onrender.com/api/review/getProductReviews/${product._id}`);
-          console.log('Rating Response:', ratingRes.data);
+          //console.log('Rating Response:', ratingRes.data);
+  
+          // Fetch user count for the product
+          const userCountRes = await axios.get(`https://shophub-backend.onrender.com/api/review/usercount/${product._id}`);
+          //console.log('User Count Response:', userCountRes.data);
+          const price=parseInt(product.price)
+          const offer = parseInt(product.offer)
+          const discount= Math.floor(price* (offer)/100)
+          const old= price + discount
+          console.log("price : ",old)
+  
           return {
             ...product,
             rating: ratingRes.data[0] ? ratingRes.data[0].review : 0,
+            userCount: userCountRes.data.userCount,
+            old: old,
+            offer: offer
           };
         })
       );
-
+  
       setProducts(productsWithRatings);
     } catch (error) {
       console.error('Error fetching products:', error);
@@ -40,7 +53,7 @@ function UserHomeBody() {
   }, [category]);
 
   const handleCardClick = (productId) => {
-    console.log(productId);
+    //console.log(productId);
     navigate(`/productdetails?productId=${productId}`);
   };
 
@@ -51,6 +64,11 @@ function UserHomeBody() {
     const daysDifference = Math.ceil(timeDifference / (1000 * 60 * 60 * 24));
     return daysDifference <= 7; // Highlight products added in the last 7 days
   };
+    
+
+  useEffect(() => {
+    fetchProducts();
+  }, [category]);
 
   return (
     <div className='user-home' data-theme={selectedTheme}>
@@ -64,12 +82,16 @@ function UserHomeBody() {
       <div className='card-body d-flex'>
         <h5 className='text-left' style={{textAlign:'left'}}>{cardData.productName}</h5>
       </div>
-      <p className={`card-rtng ${selectedTheme === 'dark' ? 'order-1' : ''}`} style={{  fontSize:'18px' }}>{cardData.rating}★</p>
-      <p style={{ textAlign: 'left', paddingLeft: '1%', fontSize: 'larger' }}>₹{cardData.price}</p>
-      {/* <div>
-        <p style={{ textAlign: 'left', paddingLeft: '1%', fontSize: 'larger' }}>₹{cardData.price}</p>
-      </div> */}
-    </div>
+      <div className='d-flex'>
+        <p className={`card-rtng ${selectedTheme === 'dark' ? 'order-1' : ''}`} style={{  fontSize:'18px' }}>{cardData.rating}★</p>
+        <p className='ps-2'>({cardData.userCount})</p>
+      </div>
+      <div className='d-flex'>
+        <p style={{ textAlign: 'left', paddingLeft: '1%', fontSize: 'larger', fontFamily:'times new roman' }}>₹{cardData.price}</p>
+        <p className='card-offer ps-2 pt-1'style={{textDecoration:'line-through', color:'gray'}}>₹{cardData.old}</p>
+        <p className='pt-1 ps-2 text-success' style={{fontWeight:'bold'}}>{cardData.offer}% off</p>
+      </div>
+    </div>  
   </div>
 ))}
 

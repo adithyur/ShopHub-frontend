@@ -23,6 +23,7 @@ function AddProduct() {
     sellerid: authid,
     productName: '',
     price: '',
+    offer: '',
     productType: '',
     category: '',
     brand: '',
@@ -61,6 +62,7 @@ function AddProduct() {
       form.append('sellerid', formData.sellerid);
       form.append('productName', formData.productName);
       form.append('price', formData.price);
+      form.append('offer', formData.offer);
       form.append('productType', formData.productType);
       form.append('category', formData.category);
       form.append('brand', formData.brand);
@@ -92,6 +94,7 @@ function AddProduct() {
           sellerid: authid,
           productName: '',
           price: '',
+          offer: '',
           productType: '',
           category: '',
           brand: '',
@@ -175,9 +178,9 @@ function AddProduct() {
     </div>
   </div>
 
-        <div className='d-flex justify-content-center align-items-center main-form-div' style={{width:'100%'}}>
+  <div className='d-flex justify-content-center align-items-center main-form-div' style={{width:'100%'}}>
     <div className="usform d-flex justify-content-center align-items-center ">
-  <form className="usraddform ms-md-5 col-sm-8 col-md-8 mt-5" onSubmit={handleSubmit}>
+      <form className="usraddform ms-md-5 col-sm-8 col-md-8 mt-5" onSubmit={handleSubmit}>
   
       <p className='add-prd-p'>
         <BsDatabaseFillAdd style={{ color: 'green', fontSize: '28px' }} /> Add Product
@@ -196,22 +199,6 @@ function AddProduct() {
             required
           />
         </div>
-  
-        <div className="col-md-6 col-sm-6">
-          <label htmlFor="price" className="form-label">Price</label>
-          <input
-            type="number"
-            className="form-control"
-            placeholder="Price"
-            name="price"
-            value={formData.price}
-            onChange={handleChange}
-            required
-          />
-        </div>
-      </div>
-  
-      <div className='mb-3 row mx-3'>
         <div className="col-md-6 col-sm-6 protype">
           <label htmlFor="productType">Type</label>
           <div className="radio-group">
@@ -242,40 +229,81 @@ function AddProduct() {
           </div>
         </div>
   
-        <div className="col-md-6 col-sm-6">
-          <label htmlFor="category" className="form-label">Category</label>
-          <select
-            className="form-select"
-            name="category"
-            value={formData.category}
-            onChange={handleChange}
-            required
-          >
-            <option value="">Select Category</option>
-            <option value="car">Car</option>
-            <option value="Refrigerator">Refrigerator</option>
-            <option value="Watch">Watch</option>
-            <option value="sports">Sports</option>
-            <option value="mobile">Mobile</option>
-            <option value="tv">TV</option>
-            <option value="headphone">Headphone</option>
-            <option value="washing machine">Washing Machine</option>
-          </select>
-        </div>
+        
       </div>
+
+      <div className='mb-3 row mx-3'>
+        <div className="col-md-6 col-sm-6">
+            <label htmlFor="price" className="form-label">Price</label>
+            <input
+              type="number"
+              className="form-control"
+              placeholder="Price"
+              name="price"
+              value={formData.price}
+              onChange={handleChange}
+              required
+            />
+          </div>
+        <div className="col-md-6 col-sm-6">
+            <label htmlFor="offer" className="form-label">Offer</label>
+            <input
+              type="number"
+              className="form-control"
+              placeholder="Offer %"
+              name="offer"
+              value={formData.offer}
+              onChange={handleChange}
+              required
+            />
+          </div>
+        </div>
   
       <div className='mb-3 row mx-3'>
         <div className="col-md-6 col-sm-6 protype">
-          <label htmlFor="brand" className="form-label">Brand</label>
-          <input
-            type="text"
-            placeholder='Brand'
-            name="brand"
-            value={formData.brand}
-            onChange={handleChange}
-          />
+            <label htmlFor="brand" className="form-label">Brand</label>
+            <input
+              type="text"
+              placeholder='Brand'
+              name="brand"
+              value={formData.brand}
+              onChange={handleChange}
+            />
+          </div>
+          <div className="col-md-6 col-sm-6">
+            <label htmlFor="category" className="form-label">Category</label>
+            <select
+              className="form-select"
+              name="category"
+              value={formData.category}
+              onChange={handleChange}
+              required
+            >
+              <option value="">Select Category</option>
+              <option value="car">Car</option>
+              <option value="Refrigerator">Refrigerator</option>
+              <option value="Watch">Watch</option>
+              <option value="sports">Sports</option>
+              <option value="mobile">Mobile</option>
+              <option value="tv">TV</option>
+              <option value="headphone">Headphone</option>
+              <option value="washing machine">Washing Machine</option>
+            </select>
+          </div>
         </div>
   
+      <div className='mb-3 row mx-3'>
+        <div className="col-md-6 col-sm-6 d-flex flex-column">
+          <label htmlFor="quantity" className="form-label">Quantity</label>
+              <input
+                type="number"
+                placeholder='Quantity'
+                name="quantity"
+                min="1" max="120"
+                value={formData.quantity}
+                onChange={handleChange}
+              />
+        </div>
         <div className="col-md-6 col-sm-6">
           <label htmlFor="image1" className="form-label">Image 1</label>
           <input
@@ -342,18 +370,8 @@ function AddProduct() {
       </div>
   
       <div className="mb-3 row mx-3 d-flex">
-        <div className="col-md-4 col-sm-4 d-flex flex-column">
-        <label htmlFor="quantity" className="form-label">Quantity</label>
-              <input
-                type="number"
-                placeholder='Quantity'
-                name="quantity"
-                min="1" max="120"
-                value={formData.quantity}
-                onChange={handleChange}
-              />
-        </div>
-        <div className="col-md-8 col-sm-8">
+        
+        <div className="col-md-12 col-sm-12">
           <label htmlFor="description" className="form-label">Description</label>
             <textarea
               className="form-control"

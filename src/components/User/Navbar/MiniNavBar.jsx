@@ -85,7 +85,7 @@ function MiniNavBar() {
                 <button
                     className="mt-2 navbutton2"
                     onClick={searchProduct}
-                    style={{ borderRadius: '50px',backgroundColor:'transparent', color: 'orangered', border: 'none', marginLeft:"-8px" }}
+                    style={{ borderRadius: '50px',backgroundColor:'transparent', color: '#007bff', border: 'none', marginLeft:"-8px" }}
                 >
                     <FaSearch />
                 </button>

@@ -15,6 +15,7 @@ function UserNavbar() {
   const authid= localStorage.getItem('authid')
   const [userName, setUserName] = useState('');
   const [searchData, setSearchData] = useState('');
+  const [cartCount, setCartCount] = useState(0);
   const [isInputClicked, setIsInputClicked] = useState(false);
 
   const handleInputClick = () => {
@@ -48,7 +49,6 @@ function UserNavbar() {
       useEffect(() => {
         const fetchUserName = async () => {
           try {
-            console.log("user id : ",localStorage.getItem('authid'))
             const res = await axios.get(`https://shophub-backend.onrender.com/api/user/getname/${localStorage.getItem('authid')}`);
             const userData = res.data;
     
@@ -66,6 +66,22 @@ function UserNavbar() {
       const searchProduct =  () => {
         navigate(`/searchproduct?searchdata=${searchData}`);
       }
+
+      useEffect(() => {
+        const fetchCartCount = async () => {
+          try {
+            const authid = localStorage.getItem('authid');
+            const res = await axios.get(`https://shophub-backend.onrender.com/api/cart/getcartbyuserid/${authid}`);
+            const cartItems = res.data;
+            const totalCount = cartItems.reduce((acc, item) => acc + item.quantity, 0);
+            setCartCount(totalCount);
+          } catch (error) {
+            console.error('Error fetching cart count:', error);
+          }
+        };
+    
+        fetchCartCount();
+      }, []);
 
       const profile = async () => {
           
@@ -129,27 +145,22 @@ function UserNavbar() {
             <FaSearch />
         </button>
     </div>
+</div> 
+    {!authid ? (<Login />) : (<>
+      <a className='pnav' href="/Cart">
+        <FaShoppingCart size={22} className='pnav-icon' /> Cart
+        {cartCount > 0 && <span className="cart-badge">{cartCount}</span>}
+      </a>
+      <a className='pnav' href="/Wishlists">
+        <AiFillHeart size={24} className='pnav-icon'/> Wishlist
+      </a>
+      <a className='pnav' onClick={profile}>
+        <FaUser size={22} className='pnav-icon' style={{ color: '#fff' }} /> { userName }
+      </a></>
+    )}
 </div>
-   
-    {!authid ? (
-      
-              <Login />
-            ) : (<>
-                <a className='pnav' href="/Cart">
-          <FaShoppingCart size={22} className='pnav-icon'/>  Cart</a>
-          <a className='pnav' href="/Wishlists">
-          <AiFillHeart size={24} className='pnav-icon'/> Wishlist
-        </a>
-        <a className='pnav' onClick={profile}>
-                <FaUser size={22} className='pnav-icon' style={{ color: '#fff' }} /> { userName }
-              </a></>
-           )}
-
-        
-
-      </div>
-  </div>
-    </div>
+</div>
+</div>
     
   )
 }

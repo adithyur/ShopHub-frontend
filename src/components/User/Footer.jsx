@@ -25,7 +25,7 @@ function Footer() {
         </div>
         <div className="row mt-4">
           <div className="col-md-12 text-center">
-            <p>&copy; {new Date().getFullYear()} Your Company Name. All Rights Reserved.</p>
+            <p>&copy; {new Date().getFullYear()} ShopHub. All Rights Reserved.</p>
           </div>
         </div>
       </div>

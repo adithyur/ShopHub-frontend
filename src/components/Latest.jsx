@@ -16,17 +16,36 @@ function Latest() {
     const navigate = useNavigate();
     const [latestProducts, setLatestProducts] = useState([]);
     useEffect(() => {
-        const fetchLatestProducts = async () => {
+      const fetchLatestProducts = async () => {
           try {
-            const response = await axios.get('https://shophub-backend.onrender.com/api/products/latestProducts');
-            setLatestProducts(response.data.latestProducts);
+              const response = await axios.get('https://shophub-backend.onrender.com/api/products/latestProducts');
+              const productsWithRatings = await Promise.all(
+                  response.data.latestProducts.map(async (product) => {
+                      const ratingRes = await axios.get(`https://shophub-backend.onrender.com/api/review/getProductReviews/${product._id}`);
+                      const userCountRes = await axios.get(`https://shophub-backend.onrender.com/api/review/usercount/${product._id}`);
+                      const price = parseInt(product.price);
+                      const offer = parseInt(product.offer);
+                      const discount = Math.floor(price * (offer) / 100);
+                      const old = price + discount;
+  
+                      return {
+                          ...product,
+                          rating: ratingRes.data[0] ? ratingRes.data[0].review : 0,
+                          userCount: userCountRes.data.userCount,
+                          old: old,
+                          offer: offer
+                      };
+                  })
+              );
+              setLatestProducts(productsWithRatings);
           } catch (error) {
-            console.error('Error fetching latest products:', error);
+              console.error('Error fetching latest products:', error);
           }
-        };
-    
-        fetchLatestProducts();
-      }, []);
+      };
+  
+      fetchLatestProducts();
+  }, []);
+  
 
       const handleCardClick = (productId) => {
         console.log(productId);
@@ -61,9 +80,14 @@ function Latest() {
       <div className='card-body d-flex'>
         <h5 className='text-left'>{cardData.productName}</h5>
       </div>
-      <div className='d-flex justify-content-between'>
-        <p className='col-lg-11 col-md-11 col-sm-11' style={{ textAlign: 'left', paddingTop: '10px', paddingLeft: '1%', fontSize: 'larger' }}>₹{cardData.price}</p>
-        <p className={`col-lg-1 col-md-1 col-sm-1 ${selectedTheme === 'dark' ? 'order-1' : ''}`} style={{ textAlign: 'right' }}>{cardData.rating}★</p>
+      <div className='d-flex'>
+        <p className={`card-rtng ${selectedTheme === 'dark' ? 'order-1' : ''}`} style={{  fontSize:'18px' }}>{cardData.rating}★</p>
+        <p className='ps-2'>({cardData.userCount})</p>
+      </div>
+      <div className='d-flex'>
+        <p style={{ textAlign: 'left', paddingLeft: '1%', fontSize: 'larger', fontFamily:'times new roman' }}>₹{cardData.price}</p>
+        <p className='card-offer ps-2 pt-1'style={{textDecoration:'line-through', color:'gray'}}>₹{cardData.old}</p>
+        <p className='pt-1 ps-2 text-success' style={{fontWeight:'bold'}}>{cardData.offer}% off</p>
       </div>
     </div>
   </div>

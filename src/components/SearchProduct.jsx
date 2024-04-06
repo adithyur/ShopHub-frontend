@@ -45,10 +45,21 @@ function SearchProduct() {
         const productsWithRatings = await Promise.all(
           res.data.map(async (product) => {
             const ratingRes = await axios.get(`https://shophub-backend.onrender.com/api/review/getProductReviews/${product._id}`);
-            console.log("Rating Response:", ratingRes.data);
+            //console.log("Rating Response:", ratingRes.data);
+            const userCountRes = await axios.get(`https://shophub-backend.onrender.com/api/review/usercount/${product._id}`);
+            //console.log('User Count Response:', userCountRes.data);
+            const price=parseInt(product.price)
+            const offer = parseInt(product.offer)
+            const discount= Math.floor(price* (offer)/100)
+            const old= price + discount
+            console.log("price : ",old)
+
             return {
               ...product,
-              rating: ratingRes.data[0] ? ratingRes.data[0].review : 0, // Assuming your API returns the rating for the product
+              rating: ratingRes.data[0] ? ratingRes.data[0].review : 0,
+              userCount: userCountRes.data.userCount,
+              old: old,
+              offer: offer
             };
           })
         );
@@ -90,18 +101,24 @@ function SearchProduct() {
                 <div className='row row-cols-1 row-cols-md-2 row-cols-lg-3 row-cols-lg-4 g-4'>
                     {products.length > 0 ? (
                         products.map((cardData, index) => (
-                            <div className='col' key={index}>
-                                <div className='card h-100 border-0 home-card' onClick={() => handleCardClick(cardData._id)} data-theme={selectedTheme}>
-                                    <img className='home-card-img' src={`${cardData.image}`} alt='Card' style={{ height: '300px' }} />
-                                    <div className='card-body d-flex'>
-                                        <h5 className='text-left'>{cardData.productName}</h5>
-                                    </div>
-                                    <div className='d-flex justify-content-between'>
-                                        <p className='col-lg-11 col-md-11 col-sm-11' style={{ textAlign: 'left', paddingTop: '10px', paddingLeft: '1%', fontSize: 'larger' }}>₹{cardData.price}</p>
-                                        <p className={`col-lg-1 col-md-1 col-sm-1 ${selectedTheme === 'dark' ? 'order-1' : ''}`} style={{ textAlign: 'right' }}>{cardData.rating}★</p>
-                                    </div>
-                                </div>
-                            </div>
+                          <div className={`col ${isLatestProduct(cardData.date) ? 'latest-product' : ''}`} key={index}>
+                            <div className='card h-100 border-0 home-card' onClick={() => handleCardClick(cardData._id)} data-theme={selectedTheme}>
+                              {isLatestProduct(cardData.date) && <div className='new-label'>New</div>}
+                              <img className='home-card-img' src={`${cardData.image}`} alt='Card' style={{ height: '300px' }} />
+                              <div className='card-body d-flex'>
+                                <h5 className='text-left' style={{textAlign:'left'}}>{cardData.productName}</h5>
+                              </div>
+                              <div className='d-flex'>
+                                <p className={`card-rtng ${selectedTheme === 'dark' ? 'order-1' : ''}`} style={{  fontSize:'18px' }}>{cardData.rating}★</p>
+                                <p className='ps-2'>({cardData.userCount})</p>
+                              </div>
+                              <div className='d-flex'>
+                                <p style={{ textAlign: 'left', paddingLeft: '1%', fontSize: 'larger', fontFamily:'times new roman' }}>₹{cardData.price}</p>
+                                <p className='card-offer ps-2 pt-1'style={{textDecoration:'line-through', color:'gray'}}>₹{cardData.old}</p>
+                                <p className='pt-1 ps-2 text-success' style={{fontWeight:'bold'}}>{cardData.offer}% off</p>
+                              </div>
+                            </div>  
+                          </div>
                         ))
                     ) : (
                         <div className="text-invalid mt-3">
