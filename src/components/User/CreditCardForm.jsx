@@ -15,7 +15,7 @@ const productId = searchParams.get('productId');
 const authid = localStorage.getItem('authid');
 const currentDate = new Date();
 const navigate = useNavigate();
-//console.log("product id : ", productId);
+////console.log("product id : ", productId);
 
   const [paymentMethod, setPaymentMethod] = useState('card');
   const [cardNumber, setCardNumber] = useState('');
@@ -53,11 +53,11 @@ const navigate = useNavigate();
     e.preventDefault();
     if (paymentMethod === 'cod') {
   
-      //console.log("Payment method: ",paymentMethod);
-      console.log("Payment method cash ");
+      ////console.log("Payment method: ",paymentMethod);
+      //console.log("Payment method cash ");
 
       setIsCODPayment(true);
-      console.log("order complete");
+      //console.log("order complete");
 
       try {
         const currentDate = new Date().toISOString();
@@ -71,18 +71,18 @@ const navigate = useNavigate();
         const transactionResponse = await axios.post(`https://shophub-backend.onrender.com/api/transaction/cod`, dataToSend);
    
         if (transactionResponse.status === 201) {
-          console.log('Transaction details saved successfully.');
+          //console.log('Transaction details saved successfully.');
           const transactionId = transactionResponse.data.transactionId;
           
           if (transactionId) {
-            console.log('Transaction ID:', transactionId);
+            //console.log('Transaction ID:', transactionId);
             const updateOrderResponse = await axios.put(`https://shophub-backend.onrender.com/api/order/unconfirmOrder/${orderId}`, { transactionId });
             if (updateOrderResponse.status === 200) {
-              console.log('waiting for admin approval.');
+              //console.log('waiting for admin approval.');
 
               const deleteProductResponse = await axios.delete(`https://shophub-backend.onrender.com/api/cart/cart/${authid}/${productId}`);
               if (deleteProductResponse.status === 200) {
-                console.log('Product deleted from the cart.');
+                //console.log('Product deleted from the cart.');
               } else {
                 console.error('Error deleting product from the cart:', deleteProductResponse.data.message);
               }
@@ -92,14 +92,14 @@ const navigate = useNavigate();
               if (getOrderDetailsResponse.status === 200) {
                 const orderData = getOrderDetailsResponse.data.quantity;
                 const quantity = orderData;
-                console.log("Quantity from order:", quantity);
+                //console.log("Quantity from order:", quantity);
 
                 const updateQuantityResponse = await axios.put(`https://shophub-backend.onrender.com/api/products/updateQuantityminus/${productId}`, {
                   quantity: quantity,
                 });
 
                 if (updateQuantityResponse.status === 200) {
-                  console.log('Quantity updated successfully');
+                  //console.log('Quantity updated successfully');
                   navigate('/order');
                 } else {
                   console.error('Error updating quantity:', updateQuantityResponse.data.message);
@@ -142,19 +142,19 @@ const navigate = useNavigate();
         const transactionResponse = await axios.post(`https://shophub-backend.onrender.com/api/transaction/createTransaction`, dataToSend);
   
         if (transactionResponse.status === 201) {
-          console.log('Transaction details saved successfully.');
+          //console.log('Transaction details saved successfully.');
           const transactionId = transactionResponse.data.transactionId;
           
           if (transactionId) {
-            console.log('Transaction ID:', transactionId);
+            //console.log('Transaction ID:', transactionId);
             const updateOrderResponse = await axios.put(`https://shophub-backend.onrender.com/api/order/unconfirmOrder/${orderId}`, { transactionId });
             if (updateOrderResponse.status === 200) {
-              console.log('waiting for admin approval.');
+              //console.log('waiting for admin approval.');
 
               const deleteProductResponse = await axios.delete(`https://shophub-backend.onrender.com/api/cart/cart/${authid}/${productId}`);
 
               if (deleteProductResponse.status === 200) {
-                console.log('Product deleted from the cart.');
+                //console.log('Product deleted from the cart.');
               } else {
                 console.error('Error deleting product from the cart:', deleteProductResponse.data.message);
               }
@@ -164,14 +164,14 @@ const navigate = useNavigate();
               if (getOrderDetailsResponse.status === 200) {
                 const orderData = getOrderDetailsResponse.data.quantity;
                 const quantity = orderData;
-                console.log("Quantity from order:", quantity);
+                //console.log("Quantity from order:", quantity);
 
                 const updateQuantityResponse = await axios.put(`https://shophub-backend.onrender.com/api/products/updateQuantityminus/${productId}`, {
                   quantity: quantity,
                 });
 
                 if (updateQuantityResponse.status === 200) {
-                  console.log('Quantity updated successfully');
+                  //console.log('Quantity updated successfully');
                   navigate('/order');
                 } else {
                   console.error('Error updating quantity:', updateQuantityResponse.data.message);

@@ -27,7 +27,7 @@ function Wishlist() {
     try {
       const res = await axios.get(`https://shophub-backend.onrender.com/api/wishlist/getwishlistbyuserid/${localStorage.getItem('authid')}`);
       setProduct(res.data);
-      console.log(res.data);
+      //console.log(res.data);
     } catch (error) {
       console.error('Error fetching wishlist products:', error);
     }
@@ -45,7 +45,7 @@ function Wishlist() {
   }, []);
 
   const handleCardClick = (productId) => {
-    console.log(productId);
+    //console.log(productId);
     navigate(`/ProductDetail?productId=${productId}`);
   };
 

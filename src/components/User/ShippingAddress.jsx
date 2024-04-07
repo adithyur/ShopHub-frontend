@@ -40,7 +40,7 @@ function ShippingAddress() {
         try {
           const res = await axios.get(`https://shophub-backend.onrender.com/api/profile/profile/${localStorage.getItem('authid')}`);
           /*setFormFields(res.data)
-          console.log(formFields)*/
+          //console.log(formFields)*/
           if(res){
             setBio({name:res.data[0].name,
           mobile1:res.data[0].mobile1,
@@ -52,13 +52,14 @@ function ShippingAddress() {
           landmark:res.data[0].landmark,
           mobile2:res.data[0].mobile2});
 
-        console.log("name : ",res.data[0].name)}
+        //console.log("name : ",res.data[0].name)
+      }
 
           else{
             alert("thenj poyi gooyis")
           }
           
-          /*console.log('profile',bio);*/
+          /*//console.log('profile',bio);*/
         } catch (error) {
           console.error('Error fetching profile:', error);
         }
@@ -82,7 +83,7 @@ function ShippingAddress() {
         toast.warning("use different mobile number as secondary")
       }
       else{
-        console.log(bio)
+        //console.log(bio)
         await axios.post(`https://shophub-backend.onrender.com/api/profile/update/${localStorage.getItem('authid')}`, bio)
         toast.success("Address Added successfully");
       }   

@@ -110,7 +110,7 @@ function EdtProduct() {
       });
 
       if (res.status === 200) {
-        console.log('Response = ', res.data);
+        //console.log('Response = ', res.data);
         toast.success('Product updated successfully');
       }
 

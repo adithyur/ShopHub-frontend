@@ -39,10 +39,10 @@ function OrderView() {
       };
 
       const orderDetail = (orderId) => {
-        console.log("order id  : ", orderId)
-        //console.log("product id : ",productId)
+        //console.log("order id  : ", orderId)
+        ////console.log("product id : ",productId)
         navigate(`/sellerorderdetails?orderId=${orderId}`);
-        console.log('order id ',orderId)
+        //console.log('order id ',orderId)
       };
     
   return (

@@ -34,10 +34,10 @@ function Login() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      console.log(formData);
+      //console.log(formData);
       const response = await axios.post('https://shophub-backend.onrender.com/api/user/login', formData);
 
-      console.log(response.data);
+      //console.log(response.data);
       if (response) {
         localStorage.setItem('authid', response.data._id);
         localStorage.setItem('authrole', response.data.role);
@@ -95,7 +95,7 @@ function Login() {
     e.preventDefault();
     try {
       if (formDataReg.password === formDataReg.repassword) {
-        console.log(formDataReg);
+        //console.log(formDataReg);
         await axios.post('https://shophub-backend.onrender.com/api/user/reguser', formDataReg);
         setFormDataReg({
           name: '',

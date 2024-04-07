@@ -46,7 +46,7 @@ function Navbar2() {
       useEffect(() => {
         const fetchUserName = async () => {
           try {
-            console.log("user id : ",localStorage.getItem('authid'))
+            //console.log("user id : ",localStorage.getItem('authid'))
             const res = await axios.get(`https://shophub-backend.onrender.com/api/user/getname/${localStorage.getItem('authid')}`);
             const userData = res.data;
     

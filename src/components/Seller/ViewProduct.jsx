@@ -23,7 +23,7 @@ function ViewProduct() {
     };
 
     const editProduct = (productId) => {
-      /*console.log(productId)*/
+      /*//console.log(productId)*/
       navigate(`/editproduct?productId=${productId}`);
     };
 
@@ -31,8 +31,8 @@ function ViewProduct() {
     const fetchproduct=async()=>{
       const res=await axios.get(`https://shophub-backend.onrender.com/api/products/getproductbyuserid/${localStorage.getItem('authid')}`)
       setproduct(res.data)
-      /*console.log(res.data)
-      console.log(res.data.productName)*/
+      /*//console.log(res.data)
+      //console.log(res.data.productName)*/
     }
   
     useEffect(() => {

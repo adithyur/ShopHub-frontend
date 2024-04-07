@@ -82,7 +82,7 @@ function OrderDetails() {
     useEffect(() => {
       const fetchTransactionDetails = async () => {
         try {
-          console.log("order id : ", orderId);
+          //console.log("order id : ", orderId);
           const res = await axios.get(`https://shophub-backend.onrender.com/api/transaction/getTransactionDetails/${orderId}`);
     
           if (res.data) {
@@ -105,10 +105,10 @@ function OrderDetails() {
 
       const res = await axios.get(`https://shophub-backend.onrender.com/api/transaction/getTransactionDetails/${orderId}`);
       const status= res.data.status;
-      //console.log("Order status:",status);
+      ////console.log("Order status:",status);
       if (status=== 'unpaid') {
         navigate(`/payment?orderId=${orderId}&productId=${productId}`);
-        //console.log('Payment logic goes here');
+        ////console.log('Payment logic goes here');
       } else {
         toast.error('Payment has already been made for this order.', {
           position: toast.POSITION.TOP_CENTER,
@@ -121,18 +121,18 @@ function OrderDetails() {
 
       const res = await axios.post(`https://shophub-backend.onrender.com/api/order/getOrderDetails/${orderId}`);
       const status= res.data.status;
-      console.log("Order status:",status);
+      //console.log("Order status:",status);
       if (status=== 'delivered') {
 
         const deliveryDateStr = res.data.deliverydate;
         const deliveryDate = new Date(deliveryDateStr);
-        console.log("delivery date : ",deliveryDate);
+        //console.log("delivery date : ",deliveryDate);
         const currentDate = new Date();
 
-        console.log("today : ",currentDate)
+        //console.log("today : ",currentDate)
         const differenceInDays = Math.floor((currentDate - deliveryDate) / (1000 * 60 * 60 * 24));
         
-        console.log("dif : ",differenceInDays)
+        //console.log("dif : ",differenceInDays)
     
         if (differenceInDays <= 7) {
           navigate(`/ordereturn?orderId=${orderId}`);
@@ -152,7 +152,7 @@ function OrderDetails() {
     const handleCheck = async () => {
       const res = await axios.get(`https://shophub-backend.onrender.com/api/transaction/getTransactionDetails/${orderId}`);
       const pay= res.data.mode;
-      console.log('role : ',pay)
+      //console.log('role : ',pay)
       if(pay==='cod'){
         setShowButton(true);
         
@@ -167,7 +167,7 @@ function OrderDetails() {
   },[])
 
   const handleCardClick = (productId) => {
-    console.log(productId)
+    //console.log(productId)
     navigate(`/productdetails?productId=${productId}`);
     };
 

@@ -40,24 +40,25 @@ function SearchProduct() {
     const fetchProducts = async () => {
       try {
         const res = await axios.get(`https://shophub-backend.onrender.com/api/products/searchdata/${searchdata}`);
-        console.log("Products:", res.data);
+        //console.log("Products:", res.data);
   
         const productsWithRatings = await Promise.all(
           res.data.map(async (product) => {
             const ratingRes = await axios.get(`https://shophub-backend.onrender.com/api/review/getProductReviews/${product._id}`);
-            //console.log("Rating Response:", ratingRes.data);
-            const userCountRes = await axios.get(`https://shophub-backend.onrender.com/api/review/usercount/${product._id}`);
-            //console.log('User Count Response:', userCountRes.data);
+            ////console.log("Rating Response:", ratingRes.data);
+            const userCountRes = await axios.get(`https://shophub-backend.onrender.com/api/review/count/${product._id}`);
+            ////console.log('User Count Response:', userCountRes.data);
             const price=parseInt(product.price)
             const offer = parseInt(product.offer)
             const discount= Math.floor(price* (offer)/100)
             const old= price + discount
-            console.log("price : ",old)
+            //console.log("price : ",old)
 
             return {
               ...product,
               rating: ratingRes.data[0] ? ratingRes.data[0].review : 0,
-              userCount: userCountRes.data.userCount,
+              reviewCount: userCountRes.data.reviewCount,
+              commentCount: userCountRes.data.commentCount,
               old: old,
               offer: offer
             };
@@ -75,7 +76,7 @@ function SearchProduct() {
     }, [searchdata]);
   
     const handleCardClick = (productId) => {
-      console.log(productId);
+      //console.log(productId);
       navigate(`/productdetails?productId=${productId}`);
     };
 
@@ -89,7 +90,7 @@ function SearchProduct() {
 
 
   return (
-    <div className='container'>
+    <div>
         <div>
           {isMobile ? <MiniNavBar /> : <UserNavbar />} 
         </div>
@@ -110,7 +111,8 @@ function SearchProduct() {
                               </div>
                               <div className='d-flex'>
                                 <p className={`card-rtng ${selectedTheme === 'dark' ? 'order-1' : ''}`} style={{  fontSize:'18px' }}>{cardData.rating}★</p>
-                                <p className='ps-2'>({cardData.userCount})</p>
+                                <p className='ps-2' style={{color:'gray', fontWeight:'bold'}}>{cardData.reviewCount} Rating &nbsp; & </p>
+                                <p className='ps-2' style={{color:'gray', fontWeight:'bold'}}>{cardData.commentCount} Coment</p>
                               </div>
                               <div className='d-flex'>
                                 <p style={{ textAlign: 'left', paddingLeft: '1%', fontSize: 'larger', fontFamily:'times new roman' }}>₹{cardData.price}</p>

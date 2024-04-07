@@ -35,7 +35,7 @@ export default function Profile() {
   };
 
   const logout = () => {
-    console.log("button clicked")
+    //console.log("button clicked")
     setShowLogoutOverlay(true); 
   }
 
@@ -56,7 +56,7 @@ export default function Profile() {
         alert("use different mobile number as secondary")
         }
       else{
-        console.log(formData)
+        //console.log(formData)
         await axios.post('https://shophub-backend.onrender.com/api/profile/profile', formData);
         setFormData({ name: '', mobile1: '', pincode: '', place: '', address: '', city: '',state: '',landmark: '',mobile2: '' });
         alert(" successfully")
@@ -71,10 +71,10 @@ export default function Profile() {
   useEffect(() => {
         const fetchUserName = async () => {
           try {
-            console.log("user id : ",localStorage.getItem('authid'))
+            //console.log("user id : ",localStorage.getItem('authid'))
             const res = await axios.get(`https://shophub-backend.onrender.com/api/user/getdetail/${localStorage.getItem('authid')}`);
             const userData = res.data;
-            console.log("data : ",userData)
+            //console.log("data : ",userData)
             if (userData && userData.name) {
               setUserName(userData.name);
               setMailId(userData.email)

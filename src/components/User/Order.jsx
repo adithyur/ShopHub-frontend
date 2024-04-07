@@ -45,15 +45,15 @@ function Order() {
   }
 
   const orderDetail = (orderId, productId ) => {
-    /*console.log("order id  : ", orderId)
-    console.log("product id : ",productId)*/
+    /*//console.log("order id  : ", orderId)
+    //console.log("product id : ",productId)*/
     navigate(`/orderdetails?orderId=${orderId}&productId=${productId}`);
   };
 
   const handleCheck = async () => {
     const res = await axios.get(`https://shophub-backend.onrender.com/api/user/userdetail/${localStorage.getItem('authid')}`);
     const role= res.data.trade;
-    console.log('role : ',role)
+    //console.log('role : ',role)
     if(role==='sell'){
       setShowUser1(true);
       
@@ -64,7 +64,7 @@ function Order() {
   }
 
   const handleCardClick = (productId) => {
-    console.log(productId)
+    //console.log(productId)
     navigate(`/productdetails?productId=${productId}`);
     };
 

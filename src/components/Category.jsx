@@ -25,7 +25,7 @@ function Category() {
       const productsWithRatings = await Promise.all(
         res.data.map(async (product) => {
           const ratingRes = await axios.get(`https://shophub-backend.onrender.com/api/review/getProductReviews/${product._id}`);
-          //console.log('Rating Response:', ratingRes.data);
+          ////console.log('Rating Response:', ratingRes.data);
           const userCountRes = await axios.get(`https://shophub-backend.onrender.com/api/review/usercount/${product._id}`);
           const price=parseInt(product.price)
           const offer = parseInt(product.offer)
@@ -54,7 +54,7 @@ function Category() {
   }, [category])
 
   const handleCardClick = (productId) => {
-    console.log(productId);
+    //console.log(productId);
     navigate(`/productdetails?productId=${productId}`);
   };
 

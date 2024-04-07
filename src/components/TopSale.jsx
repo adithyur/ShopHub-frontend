@@ -27,7 +27,7 @@ function TopSale() {
       const productsWithRatings = await Promise.all(
         res.data.map(async (product) => {
           const ratingRes = await axios.get(`https://shophub-backend.onrender.com/api/review/getProductReviews/${product._id}`);
-          console.log('Rating Response:', ratingRes.data);
+          //console.log('Rating Response:', ratingRes.data);
           return {
             ...product,
             rating: ratingRes.data[0] ? ratingRes.data[0].review : 0,
@@ -42,7 +42,7 @@ function TopSale() {
   };
 
   const handleCardClick = (productId) => {
-    console.log(productId);
+    //console.log(productId);
     navigate(`/productdetails?productId=${productId}`);
   };
 

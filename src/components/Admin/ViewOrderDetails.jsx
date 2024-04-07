@@ -27,7 +27,7 @@ function ViewOrderDetails() {
 
     useEffect(() => {
         const fetchOrderDetails = async () => {
-          console.log('orderid : ',orderId)
+          //console.log('orderid : ',orderId)
           try {
             const response = await axios.get(`https://shophub-backend.onrender.com/api/order/orderdetails/${orderId}`);
             setOrderDetails(response.data);

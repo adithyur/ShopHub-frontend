@@ -36,7 +36,7 @@ function Review() {
     const fetchProduct = async () => {
       try {
         const res = await axios.post(`https://shophub-backend.onrender.com/api/products/display/${productId}`);
-        console.log(' product : ', res);
+        //console.log(' product : ', res);
         setProduct(res.data);
 
         const userReviewResponse = await axios.get(`https://shophub-backend.onrender.com/api/review/display/${productId}/${userId}`);
@@ -54,8 +54,8 @@ function Review() {
 
   const handleStarClick = async (selectedRating) => {
     setRating(selectedRating);
-    console.log('pressed : ', selectedRating);
-    console.log('product id : ', productId);
+    //console.log('pressed : ', selectedRating);
+    //console.log('product id : ', productId);
     try {
       if (selectedRating === 0) {
         return;
@@ -69,7 +69,7 @@ function Review() {
       });
 
       if (response.status === 201) {
-        console.log('Review and rating saved to the database');
+        //console.log('Review and rating saved to the database');
       }
     } catch (error) {
       console.error('Error saving review and rating:', error);
@@ -83,7 +83,7 @@ function Review() {
   const handleSubmitComment = async (e) => {
     try {
       e.preventDefault();
-      console.log("product id : ", productId);
+      //console.log("product id : ", productId);
 
       if (comment.trim() === '' || rating === 0) {
         return;
@@ -97,7 +97,7 @@ function Review() {
       });
 
       if (res.status === 200) {
-        console.log('Review and comment saved to the database');
+        //console.log('Review and comment saved to the database');
         navigate(`/productdetails?productId=${productId}`);
       }
     } catch (error) {

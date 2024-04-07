@@ -108,7 +108,7 @@ function AddProduct() {
         });
 
         toast.success("Product Added successfully!");
-        console.log('product added');
+        //console.log('product added');
       } else {
         console.error('image1 is not a file');
         setLoading(false);

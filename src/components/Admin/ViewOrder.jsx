@@ -33,21 +33,21 @@ function ViewOrder() {
         try {
           const res = await axios.post('https://shophub-backend.onrender.com/api/order/viewOrder');
           setOrderHistory(res.data);
-          console.log("data : ",res.data)
+          //console.log("data : ",res.data)
         } catch (error) {
           console.error('Error fetching order history:', error);
         }
       };
     
       const handleAction = async (orderId) => {
-        console.log("button clicked")
+        //console.log("button clicked")
         if (orderId) {
             try{
-              console.log('order id: ',orderId)
+              //console.log('order id: ',orderId)
               const updateOrderResponse = await axios.put(`https://shophub-backend.onrender.com/api/order/confirmOrders/${orderId}`);
               if (updateOrderResponse.status === 200) {
                 toast.success("order approved successfully!");
-                console.log('Order status updated to confirmed.');
+                //console.log('Order status updated to confirmed.');
                 window.location.reload(); 
               }
             }
@@ -59,10 +59,10 @@ function ViewOrder() {
         }
 
         const orderDetail = (orderId ) => {
-          /*console.log("order id  : ", orderId)
-          console.log("product id : ",productId)*/
+          /*//console.log("order id  : ", orderId)
+          //console.log("product id : ",productId)*/
           navigate(`/vieworderdetails?orderId=${orderId}`);
-          console.log('order id ',orderId)
+          //console.log('order id ',orderId)
         };
 
         const [searchQuery, setSearchQuery] = useState('');

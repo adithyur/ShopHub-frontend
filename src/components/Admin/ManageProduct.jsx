@@ -53,7 +53,7 @@ function ManageProduct() {
           try{
             await axios.delete(`https://shophub-backend.onrender.com/api/products/deleteproduct/${productId}`);
             toast.success("Product Removed successful!");
-            console.log('Deleting product:', productId);
+            //console.log('Deleting product:', productId);
             window.location.reload(); 
           }
           catch (error) {
@@ -64,7 +64,7 @@ function ManageProduct() {
           try{
             await axios.put(`https://shophub-backend.onrender.com/api/products/updateStatus/${productId}`);
             toast.success("Product Approved successful!");
-            console.log('Approving product:', productId);
+            //console.log('Approving product:', productId);
             window.location.reload(); 
           }
           catch(error) {
@@ -84,11 +84,11 @@ function ManageProduct() {
               console.error('Error declining product:', error);
             }
           } else {
-            console.log('No reason provided for decline');
+            //console.log('No reason provided for decline');
           }
         }
       } else {
-        console.log('No product selected');
+        //console.log('No product selected');
       }
     };
 

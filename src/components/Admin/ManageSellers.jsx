@@ -34,7 +34,7 @@ function ManageSellers() {
       const fetchVerifier = async () => {
         try {
           const res = await axios.post('https://shophub-backend.onrender.com/api/user/viewseller');
-          console.log("data : ",res.data)
+          //console.log("data : ",res.data)
           setVerifier(res.data);
         } catch (error) {
           console.error('Error fetching verifier:', error);

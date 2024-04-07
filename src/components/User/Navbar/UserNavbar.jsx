@@ -148,14 +148,14 @@ function UserNavbar() {
 </div> 
     {!authid ? (<Login />) : (<>
       <a className='pnav' href="/Cart">
-        <FaShoppingCart size={22} className='pnav-icon' /> Cart
+        <FaShoppingCart size={18} className='pnav-icon' /> Cart
         {cartCount > 0 && <span className="cart-badge">{cartCount}</span>}
       </a>
       <a className='pnav' href="/Wishlists">
-        <AiFillHeart size={24} className='pnav-icon'/> Wishlist
+        <AiFillHeart size={20} className='pnav-icon'/> Wishlist
       </a>
       <a className='pnav' onClick={profile}>
-        <FaUser size={22} className='pnav-icon' style={{ color: '#fff' }} /> { userName }
+        <FaUser size={18} className='pnav-icon' style={{ color: '#fff' }} /> { userName }
       </a></>
     )}
 </div>

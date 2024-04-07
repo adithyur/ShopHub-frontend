@@ -34,7 +34,7 @@ function Checkout() {
         try {
           const res = await axios.get(`https://shophub-backend.onrender.com/api/profile/profile/${localStorage.getItem('authid')}` );
           /*setFormFields(res.data)
-          console.log(formFields)*/
+          //console.log(formFields)*/
           if(res){
             setBio({name:res.data[0].name,
           mobile1:res.data[0].mobile1,
@@ -46,7 +46,8 @@ function Checkout() {
           landmark:res.data[0].landmark,
           mobile2:res.data[0].mobile2});
 
-        console.log(res.data[0].fname)}
+        //console.log(res.data[0].fname)
+      }
 
         else {
           toast.error('error fetching address', {
@@ -61,7 +62,7 @@ function Checkout() {
         }
         
           
-          /*console.log('profile',bio);*/
+          /*//console.log('profile',bio);*/
         } catch (error) {
           console.error('Error fetching profile:', error);
         }
@@ -85,10 +86,10 @@ function Checkout() {
         alert("use different mobile number as secondary")
         }
       else{
-        console.log(bio)
+        //console.log(bio)
         const res = await axios.get(`https://shophub-backend.onrender.com/api/order/getOrderDetails/${localStorage.getItem('authid')}`);
         const orderId = res.data.orderId;
-        console.log('order id : ',orderId)
+        //console.log('order id : ',orderId)
         await axios.post(`https://shophub-backend.onrender.com/api/order/profile/${orderId}`, bio)
         toast.success("Address Added successfully");
       }
@@ -107,7 +108,7 @@ function Checkout() {
     try {
       const res = await axios.get(`https://shophub-backend.onrender.com/api/order/dsplywaiting/${localStorage.getItem('authid')}`);
       setProduct(res.data);
-      console.log('Order ID: ', res.data);
+      //console.log('Order ID: ', res.data);
     } catch (error) {
       console.error('Error fetching products:', error);
     }
@@ -118,7 +119,7 @@ function Checkout() {
       await axios.delete(`https://shophub-backend.onrender.com/api/order/delete/${localStorage.getItem('authid')}`, {
         params: { status: 'waiting for confirmation' },
       });
-      console.log('Orders with status "waiting for confirmation" deleted.');
+      //console.log('Orders with status "waiting for confirmation" deleted.');
     } catch (error) {
       console.error('Error deleting orders:', error);
     }
@@ -138,9 +139,9 @@ function Checkout() {
 
   const handleCheckout = async () => {
     try {
-      console.log('Handle Checkout called');
+      //console.log('Handle Checkout called');
       const res = await axios.get(`https://shophub-backend.onrender.com/api/order/getOrderDetails/${localStorage.getItem('authid')}`);
-      console.log(" address : ",res.data.address);
+      //console.log(" address : ",res.data.address);
       if(res.data.address){
       const { orderId, productId } = res.data;
   

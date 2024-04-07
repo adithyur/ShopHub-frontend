@@ -24,7 +24,7 @@ function Signup() {
     e.preventDefault();
     try {
       if (formDataReg.password === formDataReg.repassword) {
-        console.log(formDataReg);
+        //console.log(formDataReg);
         await axios.post('https://shophub-backend.onrender.com/api/user/reguser', formDataReg);
         setFormDataReg({
           name: '',

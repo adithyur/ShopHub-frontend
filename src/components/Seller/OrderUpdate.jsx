@@ -31,7 +31,7 @@ function OrderUpdate() {
       try {
         const res = await axios.get(`https://shophub-backend.onrender.com/api/order/orderdis/${sellerId}`);
         setOrders(res.data.orders);
-        console.log("data : ",res.data)
+        //console.log("data : ",res.data)
       } catch (error) {
         console.error('Error fetching order history:', error);
       }
@@ -40,8 +40,8 @@ function OrderUpdate() {
     const handleUpdateStatus = async (orderId) => {
       if (newStatus)
        {
-        console.log('status : ',newStatus)
-        console.log('order id : ',orderId)
+        //console.log('status : ',newStatus)
+        //console.log('order id : ',orderId)
         try {
           await axios.put(`https://shophub-backend.onrender.com/api/order/statusUpdate/${orderId}`, { status: newStatus });
           toast.success('Order status updated successfully');

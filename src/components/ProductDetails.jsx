@@ -105,7 +105,7 @@ function ProductDetails() {
       try {
             const res=await axios.post('https://shophub-backend.onrender.com/api/cart/carts', { userid: authid, productid: productId });
             if(res.status===202){
-              console.log('isCart:', isCart);
+              ////console.log('isCart:', isCart);
               setIsCart(!isCart);
             }
       } catch (error) {
@@ -122,7 +122,9 @@ function ProductDetails() {
         const offer = parseInt(product.offer)
         const discount= Math.floor(price* (offer)/100)
         const oldPrice= price + discount
-        console.log(' product : ',res)
+        //console.log('price : ',price)
+        //console.log('offer : ',offer)
+        ////console.log(' product : ',res)
         setProduct(res.data);
         setOldPrice(oldPrice);
       } catch (error) {
@@ -171,7 +173,7 @@ function ProductDetails() {
         title: pName,
         url: `http://localhost:3000/ProductDetail?productId==${pId}`,
       });
-      console.log('Shared successfully');
+      ////console.log('Shared successfully');
     } catch (error) {
       console.error('Error sharing:', error);
     }
@@ -190,7 +192,7 @@ function ProductDetails() {
       });
   
       if (response.status === 201) {
-        console.log('Comment saved to the database');
+        ////console.log('Comment saved to the database');
       }
     } catch (error) {
       console.error('Error saving comment:', error);
@@ -198,7 +200,7 @@ function ProductDetails() {
   };
 
   const rateProduct = () => {
-    console.log('id: ',product._id)
+    ////console.log('id: ',product._id)
     navigate(`/review?productId=${product._id}`);
   };
 
@@ -250,9 +252,9 @@ function ProductDetails() {
   useEffect(() => {
     async function fetchStarCounts() {
       try {
-        console.log("product id  : ",productId)
+        ////console.log("product id  : ",productId)
         const res = await axios.get(`https://shophub-backend.onrender.com/api/review/eachstar/${productId}`);
-        console.log("rating : ",res)
+        ////console.log("rating : ",res)
         setStarCounts(res.data);
       } catch (error) {
         console.error('Error fetching star counts:', error);
@@ -419,8 +421,8 @@ function ProductDetails() {
                       </div>
                   <div>
                     <div style={{borderBottom:'1px solid rgb(225, 217, 217)'}}>
-                      <button onClick={rateProduct} style={{border:'none', backgroundColor:'orange', fontWeight:'bold', color:'white' ,fontFamily:'time new roman', fontSize:'18px'}}>
-                      <MdOutlineRateReview />RATE PRODUCT ?</button>
+                      <button onClick={rateProduct} className='button-3 mt-3' >
+                        <MdOutlineRateReview />RATE PRODUCT ?</button>
                       <h1 style={{ textAlign:'left', paddingLeft:'20px'}}>Ratings & Reviews</h1>
                       <div style={{display:'flex', width:'60%', marginLeft:'50px'}}>
                           <div>
