@@ -112,7 +112,7 @@ function SearchProduct() {
                               <div className='d-flex'>
                                 <p className={`card-rtng ${selectedTheme === 'dark' ? 'order-1' : ''}`} style={{  fontSize:'18px' }}>{cardData.rating}★</p>
                                 <p className='ps-2' style={{color:'gray', fontWeight:'bold'}}>{cardData.reviewCount} Rating &nbsp; & </p>
-                                <p className='ps-2' style={{color:'gray', fontWeight:'bold'}}>{cardData.commentCount} Coment</p>
+                                <p className='ps-2' style={{color:'gray', fontWeight:'bold'}}>{cardData.commentCount} Comment</p>
                               </div>
                               <div className='d-flex'>
                                 <p style={{ textAlign: 'left', paddingLeft: '1%', fontSize: 'larger', fontFamily:'times new roman' }}>₹{cardData.price}</p>

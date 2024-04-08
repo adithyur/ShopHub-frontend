@@ -65,7 +65,7 @@ function MiniNavBar2() {
 
   return (
     <div className='mini-nav-bar'>
-      <div className='container'>
+      <div className='container' style={{backgroundColor:'#2a55e5'}}>
         <div className='d-flex' /*style={{ marginLeft: '12px',paddingRight:'25px'}}*/>
             <div className='col-sm-5' onClick={imgclick}>
                 <img src='/logo2.png' alt='ShopHub Logo' className='nav-logo'/>
@@ -80,12 +80,12 @@ function MiniNavBar2() {
                     onBlur={handleInputBlur}
                     placeholder="Find your items"
                     className={`mt-1 rounded-0 align-items-center ${isInputClicked ? 'no-border' : 'no-border'}`}
-                    style={{ width: '125px', border: 'none', backgroundColor: 'transparent',outline: 'none', paddingLeft: '5px' }}
+                    style={{ width: '125px',color:'white', border: 'none', backgroundColor: 'transparent',outline: 'none', paddingLeft: '5px' }}
                 />
                 <button
                     className="mt-2 navbutton2"
                     onClick={searchProduct}
-                    style={{ borderRadius: '50px',backgroundColor:'transparent', color: '#007bff', border: 'none', marginLeft:"-8px" }}
+                    style={{ borderRadius: '50px',backgroundColor:'transparent', color: 'white', border: 'none', marginLeft:"-8px" }}
                 >
                     <FaSearch />
                 </button>

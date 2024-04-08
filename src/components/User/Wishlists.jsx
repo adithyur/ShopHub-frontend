@@ -119,7 +119,7 @@ function Wishlists() {
                     <div className='d-flex'>
                       <p className={`card-rtng ${selectedTheme === 'dark' ? 'order-1' : ''}`} style={{  fontSize:'18px' }}>{wishlist.rating}★</p>
                       <p className='ps-2' style={{color:'gray', fontWeight:'bold'}}>{wishlist.reviewCount} Rating &nbsp; & </p>
-                      <p className='ps-2' style={{color:'gray', fontWeight:'bold'}}>{wishlist.commentCount} Coment</p>
+                      <p className='ps-2' style={{color:'gray', fontWeight:'bold'}}>{wishlist.commentCount} Comment</p>
                     </div>
                     <div className='d-flex'>
                       <p style={{ textAlign: 'left', paddingLeft: '1%', fontSize: 'larger', fontFamily:'times new roman' }}>₹{wishlist.price}</p>

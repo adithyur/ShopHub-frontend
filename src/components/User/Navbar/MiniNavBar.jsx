@@ -64,11 +64,11 @@ function MiniNavBar() {
   };
 
   return (
-    <div className='mini-nav-bar' data-theme={selectedTheme} >
-      <div className='container'>
-        <div className='d-flex' style={{ paddingRight:'25px'}}>
+    <div className='mini-nav-bar' style={{backgroundColor:'#2a55e5'}}>
+      <div className='container' style={{backgroundColor:'#2a55e5'}}>
+        <div className='d-flex'>
             <div className='col-sm-5' onClick={imgclick}>
-                <img src='/logo2.png' alt='ShopHub Logo' className='nav-logo'/>
+                <img src='/logo2.png' alt='ShopHub Logo' className='nav-logo-mini' style={{height:'60px'}}/>
             </div>
             <div className="mt-3 col-sm-7 d-flex" style={{ borderRadius: '20px', border: '1px solid gray', width: '240px', height:'45px', marginLeft:'15px' }}>
                 <input
@@ -79,13 +79,13 @@ function MiniNavBar() {
                     onClick={handleInputClick}
                     onBlur={handleInputBlur}
                     placeholder="Find your items"
-                    className={`mt-1 rounded-0 align-items-center ${isInputClicked ? 'no-border' : 'no-border'}`}
-                    style={{ width: '125px', border: 'none', backgroundColor: 'transparent',outline: 'none', paddingLeft: '5px' }}
+                    className={`srch-plchldr mt-1 rounded-0 align-items-center ${isInputClicked ? 'no-border' : 'no-border'}`}
+                    style={{ color:'white', width: '125px', border: 'none', backgroundColor: 'transparent',outline: 'none', paddingLeft: '5px' }}
                 />
                 <button
                     className="mt-2 navbutton2"
                     onClick={searchProduct}
-                    style={{ borderRadius: '50px',backgroundColor:'transparent', color: '#007bff', border: 'none', marginLeft:"-8px" }}
+                    style={{ borderRadius: '50px',backgroundColor:'transparent', color: 'white', border: 'none', marginLeft:"-8px" }}
                 >
                     <FaSearch />
                 </button>

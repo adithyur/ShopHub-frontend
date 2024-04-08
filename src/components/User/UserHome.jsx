@@ -2,7 +2,7 @@ import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useMediaQuery } from 'react-responsive';
 import UserNavbar from './Navbar/UserNavbar';
-import MiniNavBar from './Navbar/MiniNavBar';
+import MiniNavBar2 from './Navbar/MiniNavBar2';
 import NavbarCategory from './Navbar/NavbarCategory';
 import MiniNavbarFooter from './Navbar/MiniNavbarFooter';
 import UserHomeBody from './UserHomeBody';
@@ -18,7 +18,7 @@ function UserHome() {
   return (
     <div>
       <div>
-        {isMobile ? <MiniNavBar /> : <UserNavbar />}
+        {isMobile ? <MiniNavBar2 /> : <UserNavbar />}
       </div>
       <div>
         <NavbarCategory/>

@@ -98,12 +98,20 @@ function NavbarCategory() {
 <div className='container' >
 <div className='d-flex align-items-center overflow-auto navbar-category' style={{ borderBottom: '1px solid rgb(214, 206, 206)!important' , scrollbarWidth:'thin', scrollBehavior:'smooth', scrollbarColor:'transparent transparent'}}>
     <div style={{ paddingLeft: '25px' }}>
-      <a onClick={() => { navigate(`/category?category=${'mobile'}`); }} className='homeicon'>
+
+
+    <a href='/topsale' className='homeicon3'>
+            <FcSalesPerformance size={28}/>
+            <br></br>
+            <span className="text">Top Sale</span>
+          </a>
+    </div>
+    <a onClick={() => { navigate(`/category?category=${'mobile'}`); }} className='homeicon'>
         <CiMobile3 size={28} />
         <br></br>
         <span>Mobile</span>
       </a>
-    </div>
+
           <a onClick={()=>{navigate(`/category?category=${'headset'}`)}} children="nav-item" className='homeicon2'>
             <MdHeadset size={28}/>
             <br></br>
@@ -144,13 +152,6 @@ function NavbarCategory() {
             <br></br>
             <span className="text">Sports</span>
           </a>
-
-          <a href='/topsale' className='homeicon3'>
-            <FcSalesPerformance size={28}/>
-            <br></br>
-            <span className="text">Top Sale</span>
-          </a>
-
           </div>
         </div>
     </div>

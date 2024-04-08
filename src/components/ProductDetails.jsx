@@ -118,6 +118,7 @@ function ProductDetails() {
     const fetchProduct = async () => {
       try {
         const res = await axios.post(`https://shophub-backend.onrender.com/api/products/display/${productId}`);
+        console.log('price : ',product.price)
         const price=parseInt(product.price)
         const offer = parseInt(product.offer)
         const discount= Math.floor(price* (offer)/100)
@@ -305,10 +306,12 @@ function ProductDetails() {
             </div>
             <div className='col-sm-3 col-md-3 col-lg-3 mt-3 d-flex justify-content-end product-header'>
               <div className='share-cart-wishlist'>
-                <a className='share-button' onClick={() => { handleShare(product._id, product.productName) }}>
-                  <IoArrowRedoCircle className='share-icon' />
-                  Share
-                </a>
+                <button style={{backgroundColor:'transparent', border:'none'}}>
+                  <a className='share-button' onClick={() => { handleShare(product._id, product.productName) }} >
+                    <IoArrowRedoCircle className='share-icon' />
+                    Share
+                  </a>
+                </button>
                 <button className="cart-button" onClick={handleCartClick}>
                   <span className='cart-el'>
                     <HiShoppingCart className='cart-icon' style={{ color: isCart ? 'blue' : (selectedTheme === 'dark' ? 'white' : 'black') }} />
@@ -386,19 +389,19 @@ function ProductDetails() {
       </div>
     </div>
           <div className="product-detail" style={{ borderBottom: '1px solid rgb(225, 217, 217)', }}>
-            <div style={{ display: 'flex', flexDirection: 'row', height: '100px' }}>
+            <div style={{ height: '100px' }}>
               <div className='d-flex' style={{ flexBasis: '80%' }}>
                 <h1 className='price' style={{ paddingLeft: '20px', paddingTop: '20px', textAlign:'left' }}> ₹ {product.price}</h1>
-                <p className='card-offer ps-3 pt-4'style={{fontSize:'24px', textDecoration:'line-through', color:'gray'}}>₹{oldPrice}</p>
-                <p className='pt-4 ps-2 text-success' style={{fontSize:'25px', fontWeight:'bold'}}>{product.offer}% off</p>
+                <p className='card-offer ps-3 pt-4'style={{ textDecoration:'line-through', color:'gray'}}>₹{oldPrice}</p>
+                <p className='pt-4 ps-2 text-success' style={{ fontWeight:'bold'}}>{product.offer}% off</p>
               </div>
-              <div className='prd-dtl-day'>
-        {deliveryDate && (
-          <p style={{ fontWeight: 'bold', fontFamily: 'inherit', paddingTop: '30px', textAlign: 'left !important' }}>
-            Get it by: 2 days ( {deliveryDate} )
-          </p>
-        )}
-      </div>
+              <div className='prd-dtl-day' >
+                {deliveryDate && (
+                  <p style={{ fontWeight: 'bold', fontFamily: 'inherit' }}>
+                    Get it by: 2 days ( {deliveryDate} )
+                  </p>
+                )}
+              </div>
             </div>
             <div className="buy-button" style={{ display: 'flex', justifyContent: 'flex-end' }}>
         <button className="btn btn-primary buy-btn mb-3" style={{fontWeight:'bold',background:'#2a55e5', borderColor:'transparent'}} onClick={orderclick}>
@@ -422,7 +425,7 @@ function ProductDetails() {
                   <div>
                     <div style={{borderBottom:'1px solid rgb(225, 217, 217)'}}>
                       <button onClick={rateProduct} className='button-3 mt-3' >
-                        <MdOutlineRateReview />RATE PRODUCT ?</button>
+                        <MdOutlineRateReview size={22}/> &nbsp; RATE PRODUCT ?</button>
                       <h1 style={{ textAlign:'left', paddingLeft:'20px'}}>Ratings & Reviews</h1>
                       <div style={{display:'flex', width:'60%', marginLeft:'50px'}}>
                           <div>
@@ -445,7 +448,7 @@ function ProductDetails() {
               <div>
                 <p style={{fontSize:'18px', paddingLeft:'5px'}}> {review.user}</p>
                 <div style={{marginLeft:'5px' ,backgroundColor:'green', borderRadius:'10px', width:'40px'}}>
-                  <p style={{marginTop:'-10px',fontSize:'16px', paddingLeft:'10px'}}>
+                  <p style={{marginTop:'-10px',fontSize:'16px', paddingLeft:'10px', color:'white'}}>
                     {review.rating}★
                   </p>
                 </div>
