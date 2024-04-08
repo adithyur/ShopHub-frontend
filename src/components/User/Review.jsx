@@ -6,10 +6,10 @@ import { useMediaQuery } from 'react-responsive';
 import { FaKey } from 'react-icons/fa';
 import { FaUser } from 'react-icons/fa';
 import { FaBalanceScale } from 'react-icons/fa';
-
 import MiniNavbarFooter from './Navbar/MiniNavbarFooter';
 import UserNavbar from './Navbar/UserNavbar';
 import MiniNavBar from './Navbar/MiniNavBar';
+import Footer from './Footer';
 import '../Styles/style.css';
 
 function Review() {
@@ -232,6 +232,9 @@ function Review() {
   </div>
 </div>
 </div>
+<div>
+        <Footer/>
+      </div>
 <div>
         {isMobile && <MiniNavbarFooter />}      
       </div>

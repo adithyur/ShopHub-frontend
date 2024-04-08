@@ -60,7 +60,8 @@ function MiniNavBar() {
   }
 
   const searchProduct = () => {
-    navigate(`/SearchPro?searchdata=${searchData}`);
+    //console.log("search : ",searchData)
+    navigate(`/searchproduct?searchdata=${searchData}`);
   };
 
   return (
