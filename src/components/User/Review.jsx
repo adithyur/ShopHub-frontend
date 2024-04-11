@@ -146,7 +146,11 @@ function Review() {
         <div className='row mt-5'>
           <div className={'col-md-6 col-sm-12 order-${isMobile ? 1 : 2}'}>
             <h3 className='review-pro-name'>{product.productName}</h3>
-            <h2 className='review-h2'>{averageRating} ★ ({userCount}) </h2>
+            <div className='d-flex'>
+              <h2 className='review-h2'>{averageRating} </h2>
+              <h2 className='review-h2' style={{color:'gold'}}>★</h2>
+              <h2 className='review-h2'>({userCount}) </h2>
+            </div>
             <img src={`${product.image}`} alt="Product" className="img-fluid" />
           </div>
           <div className={'col-md-6 col-sm-12 order-${isMobile ? 1 : 2}'}>
