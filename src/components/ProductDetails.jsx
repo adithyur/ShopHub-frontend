@@ -29,6 +29,8 @@ function ProductDetails() {
   const [oldPrice,setOldPrice] = useState(0);
   const [userCount, setUserCount] = useState(0);
   const [reviews, setReviews] = useState([]);
+  const [isWishlist, setIsWishlist] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
   const [averageRating, setAverageRating] = useState(0);
   const [starCounts, setStarCounts] = useState({
     1: 0,
@@ -81,6 +83,7 @@ function ProductDetails() {
 
   const handleButtonClick = async () => {
     const authid = localStorage.getItem('authid');
+    setIsWishlist(true);
     if (!authid) {
       navigate('/login');
     } else {
@@ -94,22 +97,33 @@ function ProductDetails() {
       } catch (error) {
         console.error('Error updating wishlist:', error);
       }
+      finally {
+        setIsWishlist(false);
+      }
     }
   };
 
   const handleCartClick = async  () => {
     const authid = localStorage.getItem('authid');
+    setIsLoading(true);
     if (!authid) {
       navigate('/login');
     } else {
       try {
-            const res=await axios.post('https://shophub-backend.onrender.com/api/cart/carts', { userid: authid, productid: productId });
-            if(res.status===202){
-              ////console.log('isCart:', isCart);
-              setIsCart(!isCart);
-            }
+       if(!isCart) {
+          const res=await axios.post('https://shophub-backend.onrender.com/api/cart/carts', { userid: authid, productid: productId });
+            ////console.log('isCart:', isCart);
+          setIsCart(!isCart);
+       }
+       else{
+        await axios.delete(`https://shophub-backend.onrender.com/api/cart/cart/${authid}/${productId}`);
+        setIsCart(!isCart);
+      }
       } catch (error) {
         console.error('Error updating cart:', error);
+      }
+      finally {
+        setIsLoading(false);
       }
     }
   };
@@ -309,20 +323,35 @@ function ProductDetails() {
                 <button style={{backgroundColor:'transparent', border:'none'}}>
                   <a className='share-button' onClick={() => { handleShare(product._id, product.productName) }} >
                     <IoArrowRedoCircle className='share-icon' />
-                    Share
+                    share
                   </a>
                 </button>
-                <button className="cart-button" onClick={handleCartClick}>
-                  <span className='cart-el'>
-                    <HiShoppingCart className='cart-icon' style={{ color: isCart ? 'blue' : (selectedTheme === 'dark' ? 'white' : 'black') }} />
-                    <span className="cartbutton-text" style={{ color: isCart ? 'blue' : (selectedTheme === 'dark' ? 'white' : 'black')}}>Cart</span>
-                  </span>
+                {isLoading ? (
+                <button className="cart-button">
+                  <div className="cart-button spinner-border text-danger" role="status">
+                    <span className="visually-hidden">Loading...</span>
+                  </div>
                 </button>
-
-                <button className={`wishlist-button`} onClick={handleButtonClick} >
-                  <span className='wishlist-el' >  <FontAwesomeIcon icon={faHeart} style={{color: isSaved ? 'red' : (selectedTheme === 'dark' ? 'white' : 'black'),}}  />
-                  <span className="wishlistbutton-text" style={{color: isSaved ? 'red' : (selectedTheme === 'dark' ? 'white' : 'black'),}}>{isSaved ? 'Saved' : 'Save'} </span></span>
-                </button>
+                ) : (
+                  <button className="cart-button" onClick={handleCartClick}>
+                    <span className='cart-el'>
+                      <HiShoppingCart className='cart-icon' style={{ color: isCart ? '#f00a4f' : (selectedTheme === 'dark' ? 'white' : 'black') }} />
+                      <span className="cartbutton-text" style={{ color: isCart ? '#f00a4f' : (selectedTheme === 'dark' ? 'white' : 'black')}}>cart</span>
+                    </span>
+                  </button>
+                )}
+                {isWishlist ? (
+                  <button className="wishlist-button">
+                    <div className="wishlist-button spinner-border text-success" role="status">
+                      <span className="visually-hidden">Loading...</span>
+                    </div>
+                  </button>
+                  ) : (
+                  <button className={`wishlist-button`} onClick={handleButtonClick} >
+                    <span className='wishlist-el' >  <FontAwesomeIcon icon={faHeart} style={{color: isSaved ? '#068a36' : (selectedTheme === 'dark' ? 'white' : 'black'),}}  />
+                    <span className="wishlistbutton-text" style={{color: isSaved ? '#068a36' : (selectedTheme === 'dark' ? 'white' : 'black'),}}>{isSaved ? 'saved' : 'save'} </span></span>
+                  </button>
+                )}
               </div>
             </div>
           </div>
@@ -392,7 +421,7 @@ function ProductDetails() {
             <div style={{ height: '100px' }}>
               <div className='d-flex' style={{ flexBasis: '80%' }}>
                 <h1 className='price' style={{ paddingLeft: '20px', paddingTop: '20px', textAlign:'left' }}> ₹ {product.price}</h1>
-                <p className='card-offer ps-3 pt-4'style={{ textDecoration:'line-through', color:'gray'}}>₹{oldPrice}</p>
+                <p className='card-offer ps-3 pt-4'style={{ textDecoration:'line-through', color:'gray'}}>₹{parseInt(product.price) + Math.floor(product.price* (product.offer)/100)}</p>
                 <p className='pt-4 ps-2 text-success' style={{ fontWeight:'bold'}}>{product.offer}% off</p>
               </div>
               <div className='prd-dtl-day' >

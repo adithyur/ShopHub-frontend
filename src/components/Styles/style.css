@@ -287,7 +287,8 @@
         /*UserNavbar-large
 -------------------------------*/
 .nav-bar-lg{
-  margin-top: -38px;
+  margin-top: -30px;
+  height: 65px;
 }
 
 .mini-nav-bar{
@@ -308,11 +309,11 @@
 
 .nav-lg{
   padding-right: 25px;
-  border-bottom: 1px solid rgb(214, 206, 206) ;
+  /*border-bottom: 1px solid rgb(214, 206, 206) ;*/
 }
 
 .nav-logo-lg, .nav-logo-mini{
-  height: 75px;
+  height: 55px;
 }
 
 .nav-logo-lg:hover, .nav-logo-mini:hover{
@@ -568,7 +569,7 @@ color: goldenrod ;
   }
 
 .share-button:hover{
-  color: green;
+  color: blue;
 }
 
 .cart-button, .wishlist-button{
@@ -734,10 +735,14 @@ color: goldenrod ;
     margin-top: -20px;
   }
   .share-icon{
-    font-size: 26px;
+    font-size: 22px;
   }
 
-  .cart-icon, .cartbutton-text{
+   .cartbutton-text{
+    font-size: 18px;
+  }
+
+  .cart-icon{
     font-size: 20px;
   }
 

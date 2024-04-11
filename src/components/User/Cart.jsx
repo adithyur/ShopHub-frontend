@@ -51,7 +51,7 @@ function Cart() {
     const fetchproduct=async()=>{
         const res=await axios.get(`https://shophub-backend.onrender.com/api/cart/getcartbyuserid/${localStorage.getItem('authid')}`)
       setproduct(res.data)
-      //console.log(res.data)
+      console.log(res.data)
     }
 
 
@@ -60,7 +60,7 @@ function Cart() {
     },[])
 
     const handleCardClick = (productId) => {
-    //console.log(productId)
+    console.log(productId)
     navigate(`/productdetails?productId=${productId}`);
     };
 
@@ -116,11 +116,11 @@ function Cart() {
         total: cartData.total,
       };
   
-      //console.log(`Quantity for product ${productId}: ${cartData.quantity}`);
-      //console.log('Selected Order:', order);
+      console.log(`Quantity for product ${productId}: ${cartData.quantity}`);
+      console.log('Selected Order:', order);
   
       const orderRes = await axios.post(`https://shophub-backend.onrender.com/api/order/place`, [order]);
-      //console.log('Order placed:', orderRes.data);
+      console.log('Order placed:', orderRes.data);
   
       navigate('/checkout');
     } catch (error) {
@@ -168,9 +168,9 @@ return
       const authid = localStorage.getItem('authid');
       const res = await axios.get(`https://shophub-backend.onrender.com/api/cart/increment/${authid}/${productId}`);
       const updatedCart = res.data.cart;
-      //console.log("quantity : ", updatedCart.quantity);
-      //console.log("productid : ",productId)
-      //console.log("authid : ",authid)
+      console.log("quantity : ", updatedCart.quantity);
+      console.log("productid : ",productId)
+      console.log("authid : ",authid)
       fetchproduct();}
     } catch (error) {
       console.error('Error incrementing quantity:', error);
@@ -183,9 +183,9 @@ return
       const authid = localStorage.getItem('authid');
       const res = await axios.get(`https://shophub-backend.onrender.com/api/cart/decrement/${authid}/${productId}`);
       const updatedCart = res.data.cart;
-      //console.log("quantity : ", updatedCart.quantity);
-      //console.log("productid : ",productId)
-      //console.log("authid : ",authid)
+      console.log("quantity : ", updatedCart.quantity);
+      console.log("productid : ",productId)
+      console.log("authid : ",authid)
       fetchproduct();
       
     } catch (error) {
@@ -198,7 +198,7 @@ return
       await axios.delete(`https://shophub-backend.onrender.com/api/order/delete/${localStorage.getItem('authid')}`, {
         params: { status: 'waiting for confirmation' },
       });
-      //console.log('Orders with status "waiting for confirmation" deleted.');
+      console.log('Orders with status "waiting for confirmation" deleted.');
     } catch (error) {
       console.error('Error deleting orders:', error);
     }
