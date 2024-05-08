@@ -18,11 +18,14 @@ function AdminHome() {
   const navigate = useNavigate();
   const [userCount, setUserCount] = useState(null);
   const authrole = localStorage.getItem('authrole');
+  const [toastShown, setToastShown] = useState(false);
+
   if(authrole!='admin'){
     navigate('*')
   }
   else{
     toast.success("Welcome back Admin!");
+    setToastShown(true);
   }
   const [sellerCount, setSellerCount] = useState(null);
   const [completedOrdersCount, setCompletedOrdersCount] = useState(0);
