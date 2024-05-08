@@ -37,10 +37,12 @@ function ManageUsers() {
     try {
       await axios.delete(`https://shophub-backend.onrender.com/api/user/delete/${userId}`);
       toast.success("user removed successfully!");
+      setToastShown(true);
       // Remove the deleted user from the users list
       setUsers(users.filter(user => user._id !== userId));
     } catch (error) {
       toast.error("can't remove user!");
+      setToastShown(true);
       console.error('Error deleting user:', error);
     }
   };

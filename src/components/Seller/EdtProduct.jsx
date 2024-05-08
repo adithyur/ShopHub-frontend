@@ -60,6 +60,7 @@ function EdtProduct() {
     } catch (error) {
       console.error('Error fetching product:', error);
       toast.error("Error fetching product!");
+      setToastShown(true);
     }
   };
 
@@ -112,12 +113,14 @@ function EdtProduct() {
       if (res.status === 200) {
         //console.log('Response = ', res.data);
         toast.success('Product updated successfully');
+        setToastShown(true);
       }
 
       navigate('/ViewProduct');
     } catch (error) {
       console.error('Error updating product:', error);
       toast.error('Error updating product');
+      setToastShown(true);
     }
   };
 

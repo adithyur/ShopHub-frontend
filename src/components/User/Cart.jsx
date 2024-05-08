@@ -92,6 +92,7 @@ function Cart() {
   
     if (!selectedProduct) {
       toast.warning("Please select a product to order.");
+      setToastShown(true);
       return;
     }
   
@@ -162,6 +163,7 @@ function Cart() {
     try {
       if(q<=cq){
         toast.warning(`Only ${q} items available`)
+        setToastShown(true);
 return
       }
       else {

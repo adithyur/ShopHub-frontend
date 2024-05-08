@@ -81,15 +81,18 @@ function ShippingAddress() {
     try {
       if(bio.mobile1===bio.mobile2){
         toast.warning("use different mobile number as secondary")
+        setToastShown(true);
       }
       else{
         //console.log(bio)
         await axios.post(`https://shophub-backend.onrender.com/api/profile/update/${localStorage.getItem('authid')}`, bio)
         toast.success("Address Added successfully");
+        setToastShown(true);
       }   
     } catch (error) {
       console.error('Error adding Address:', error);
       toast.error("Error adding Address:");
+      setToastShown(true);
     }
   };
 

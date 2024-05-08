@@ -114,6 +114,7 @@ function OrderDetails() {
           position: toast.POSITION.TOP_CENTER,
           autoClose: 3000 // Close the notification after 3 seconds
         });
+        setToastShown(true);
       }
     };
 

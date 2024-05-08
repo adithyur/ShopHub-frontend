@@ -14,6 +14,7 @@ import 'react-toastify/dist/ReactToastify.css';
 function ManageSellers() {
 
     const [showLogoutOverlay, setShowLogoutOverlay] = useState(false);
+    const [toastShown, setToastShown] = useState(false);
     const [verifier, setVerifier] = useState([]);
     const navigate=useNavigate()
     const authrole = localStorage.getItem('authrole');
@@ -45,10 +46,12 @@ function ManageSellers() {
         try {
           await axios.delete(`https://shophub-backend.onrender.com/api/user/delete/${userId}`);
           toast.success("seller removed successfully!");
+          setToastShown(true);
           // Remove the deleted user from the users list
           setVerifier(verifier.filter(user => user._id !== userId));
         } catch (error) {
           toast.error("can't remove seller!");
+          setToastShown(true);
           console.error('Error deleting user:', error);
         }
       };

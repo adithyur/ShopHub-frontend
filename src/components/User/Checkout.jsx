@@ -92,11 +92,13 @@ function Checkout() {
         //console.log('order id : ',orderId)
         await axios.post(`https://shophub-backend.onrender.com/api/order/profile/${orderId}`, bio)
         toast.success("Address Added successfully");
+        setToastShown(true);
       }
     
     } catch (error) {
       console.error('Error adding Address:', error);
       toast.error("Error adding Address:");
+      setToastShown(true);
     }
 };
 
@@ -161,6 +163,7 @@ function Checkout() {
         draggable: true,
         progress: undefined,
       });
+      setToastShown(true);
     }
     
     } catch (error) {

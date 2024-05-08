@@ -45,14 +45,17 @@ function OrderUpdate() {
         try {
           await axios.put(`https://shophub-backend.onrender.com/api/order/statusUpdate/${orderId}`, { status: newStatus });
           toast.success('Order status updated successfully');
+          setToastShown(true);
           fetchOrders();
           setNewStatus('');
         } catch (error) {
           console.error('Error updating order status:', error);
           toast.error('Error updating order status');
+          setToastShown(true);
         }
       } else {
         toast.warning('Please select a new status');
+        setToastShown(true);
       }
     };
 

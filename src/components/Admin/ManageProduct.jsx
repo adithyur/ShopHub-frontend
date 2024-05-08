@@ -53,22 +53,26 @@ function ManageProduct() {
           try{
             await axios.delete(`https://shophub-backend.onrender.com/api/products/deleteproduct/${productId}`);
             toast.success("Product Removed successful!");
+            setToastShown(true);
             //console.log('Deleting product:', productId);
             window.location.reload(); 
           }
           catch (error) {
             toast.error("Can't delete product!");
+            setToastShown(true);
             console.error('Error deleting product:', error);
           }
         } else if (action === 'approve') {
           try{
             await axios.put(`https://shophub-backend.onrender.com/api/products/updateStatus/${productId}`);
             toast.success("Product Approved successful!");
+            setToastShown(true);
             //console.log('Approving product:', productId);
             window.location.reload(); 
           }
           catch(error) {
             toast.error("Can't approve product!");
+            setToastShown(true);
             console.error('Error approveing product:', error);
           }
         } else if (action === 'decline') {
@@ -78,9 +82,11 @@ function ManageProduct() {
               const updatedProduct = { status: 'rejected', reason };
               await axios.put(`https://shophub-backend.onrender.com/api/products/unupdate/${productId}`, updatedProduct);
               toast.success("Product declined successful!");
+              setToastShown(true);
               window.location.reload(); 
             } catch (error) {
               toast.error("Can't decline product!");
+              setToastShown(true);
               console.error('Error declining product:', error);
             }
           } else {
