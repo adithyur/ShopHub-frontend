@@ -42,8 +42,9 @@ function Login() {
         localStorage.setItem('authrole', response.data.role);
         setFormData({ email: '', password: '' });
         if (!toastShown) {
-          toast.success("Login successful!");
           setToastShown(true);
+          toast.success("Login successful!");
+          
         }
         if (response.data.role === 'user') {
           navigate('/userhome');

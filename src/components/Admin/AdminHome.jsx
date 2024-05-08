@@ -20,13 +20,13 @@ function AdminHome() {
   const authrole = localStorage.getItem('authrole');
   const [toastShown, setToastShown] = useState(false);
 
-  if(authrole!='admin'){
-    navigate('*')
-  }
-  else{
-    toast.success("Welcome back Admin!");
-    setToastShown(true);
-  }
+  useEffect(() => {
+    if (authrole === 'admin' && !toastShown) {
+      toast.success("Welcome back Admin!");
+      setToastShown(true);
+    }
+  }, []);
+  
   const [sellerCount, setSellerCount] = useState(null);
   const [completedOrdersCount, setCompletedOrdersCount] = useState(0);
   const [completedOrdersCountLastWeek, setCompletedOrdersCountLastWeek] = useState(0);
