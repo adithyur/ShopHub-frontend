@@ -18,6 +18,7 @@ function Login() {
   const [formData, setFormData] = useState({ email: '', password: '' });
   const [showPassword, setShowPassword] = useState(false);
   const [showModal, setShowModal] = useState(true);
+  const [toastShown, setToastShown] = useState(false);
   const [showRegistrationForm, setShowRegistrationForm] = useState(false);
   const [formDataReg, setFormDataReg] = useState({ name: '', email: '', password: '', repassword: '', trade: '' });
   const [isValid, setIsValid] = useState(true);
@@ -34,22 +35,21 @@ function Login() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      //console.log(formData);
       const response = await axios.post('https://shophub-backend.onrender.com/api/user/login', formData);
-
-      //console.log(response.data);
+  
       if (response) {
         localStorage.setItem('authid', response.data._id);
         localStorage.setItem('authrole', response.data.role);
         setFormData({ email: '', password: '' });
-        if (response.data.role === 'user') {
+        if (!toastShown) {
           toast.success("Login successful!");
+          setToastShown(true);
+        }
+        if (response.data.role === 'user') {
           navigate('/userhome');
         } else if (response.data.role === 'seller') {
-          toast.success("Login successful!");
           navigate('/SellerHome');
         } else {
-          toast.success("Login successful!");
           navigate('/adminhome');
         }
       }
@@ -172,7 +172,7 @@ function Login() {
             </div>
 
             <div style={{ textAlign: 'left', paddingLeft: '15px', marginTop: '10px' }}>
-              <button className="btn btn-primary log-btn" role="button" onClick={handleSubmit} style={{ backgroundColor: 'orangered', border: 'none' }}>
+              <button className="btn btn-primary log-btn" role="button" onClick={handleSubmit} style={{ backgroundColor: '#2a55e5', border: 'none' }}>
                 Login
               </button>
               <a className="logina2" onClick={handleShowRegistrationForm} style={{ paddingLeft: '60px', cursor: 'pointer' }}>
@@ -276,7 +276,7 @@ function Login() {
           role="button"
           type="submit"
           disabled={!isValid}
-          style={{ backgroundColor: 'orangered', border: 'none' }}
+          style={{ backgroundColor: '#2a55e5', border: 'none' }}
         >
           SIGN UP
         </button>

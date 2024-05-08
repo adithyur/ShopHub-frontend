@@ -13,7 +13,7 @@ function Footer() {
           <div className="col-lg-4 mt-5">
             <h3>Contact Us</h3>
             <ul className="list-unstyled">
-              <li>Email: &nbsp; <a href="mailto:info@example.com">info@example.com</a></li>
+              <li>Email: &nbsp; <a href="mailto:info@example.com">shophub@example.com</a></li>
               <li>Phone: &nbsp;  <a href="tel:123-456-7890">123-456-7890</a></li>
             </ul>
             <div className="social-icons">
