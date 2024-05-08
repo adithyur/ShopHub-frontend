@@ -283,7 +283,7 @@ function AddProduct() {
               required
             >
               <option value="">Select Category</option>
-              <option value="refrigerator">Refrigerator</option>
+              <option value="refridgerator">Refrigerator</option>
               <option value="watch">Watch</option>
               <option value="sports">Sports</option>
               <option value="mobile">Mobile</option>
