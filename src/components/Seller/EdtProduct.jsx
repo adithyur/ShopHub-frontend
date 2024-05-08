@@ -15,6 +15,7 @@ import 'react-toastify/dist/ReactToastify.css';
 function EdtProduct() {
   const location = useLocation();
   const searchParams = new URLSearchParams(location.search);
+  const [toastShown, setToastShown] = useState(false);
   const productId = searchParams.get('productId');
   const navigate = useNavigate();
   const authrole = localStorage.getItem('authrole');

@@ -18,6 +18,7 @@ function ManageProduct() {
     const [products, setProducts] = useState([]);
     const [isOpen, setIsOpen] = useState(false);
     const [showLogoutOverlay, setShowLogoutOverlay] = useState(false);
+    const [toastShown, setToastShown] = useState(false);
     const navigate=useNavigate()
     const authrole = localStorage.getItem('authrole');
     if(authrole!='admin'){

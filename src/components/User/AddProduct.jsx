@@ -15,6 +15,7 @@ function AddProduct() {
   const navigate = useNavigate();
   const authid = localStorage.getItem('authid');
   const authrole = localStorage.getItem('authrole');
+  const [toastShown, setToastShown] = useState(false);
     if(authrole!='seller'){
       navigate('*')
     }

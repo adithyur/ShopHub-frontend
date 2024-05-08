@@ -16,6 +16,7 @@ function ManageUsers() {
     const [users, setUsers] = useState([]);
     const navigate=useNavigate()
     const authrole = localStorage.getItem('authrole');
+    const [toastShown, setToastShown] = useState(false);
     if(authrole!='admin'){
       navigate('*')
     }

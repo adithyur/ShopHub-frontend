@@ -26,6 +26,7 @@ function Cart() {
     const [orderProducts, setOrderProducts] = useState([]); // List of products from order table
     const [productCount, setProductCount] = useState({});
     const authrole = localStorage.getItem('authrole');
+    const [toastShown, setToastShown] = useState(false);
     if(authrole!='user'){
       navigate('*')
     }

@@ -16,6 +16,7 @@ function ViewOrder() {
     const [orderHistory, setOrderHistory] = useState([]);
     const navigate=useNavigate()
     const authrole = localStorage.getItem('authrole');
+    const [toastShown, setToastShown] = useState(false);
     if(authrole!='admin'){
       navigate('*')
     }
@@ -49,6 +50,7 @@ function ViewOrder() {
                 toast.success("order approved successfully!");
                 //console.log('Order status updated to confirmed.');
                 window.location.reload(); 
+                setToastShown(true);
               }
             }
             catch (error) {

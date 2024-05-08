@@ -16,6 +16,7 @@ function OrderDetails() {
     const location = useLocation();
     const searchParams = new URLSearchParams(location.search);
     const authrole = localStorage.getItem('authrole');
+    const [toastShown, setToastShown] = useState(false);
     if(authrole!='user'){
       navigate('*')
     }

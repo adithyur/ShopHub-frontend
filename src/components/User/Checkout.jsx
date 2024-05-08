@@ -16,6 +16,7 @@ function Checkout() {
   const [product, setProduct] = useState([]);
   const navigate = useNavigate();
   const authrole = localStorage.getItem('authrole');
+  const [toastShown, setToastShown] = useState(false);
     if(authrole!='user'){
       navigate('*')
     }
