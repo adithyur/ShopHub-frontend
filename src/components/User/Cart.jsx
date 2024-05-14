@@ -8,7 +8,6 @@ import { MdDelete } from 'react-icons/md';
 import UserNavbar from './Navbar/UserNavbar';
 import MiniNavBar from './Navbar/MiniNavBar';
 import MiniNavbarFooter from './Navbar/MiniNavbarFooter';
-import ProgressBar from './ProgressBar'; 
 import '../Styles/style.css'
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -219,25 +218,6 @@ return
         </div>
         <div className='container'>
             <div className='cardcart'>
-            {/* <div class="progress-container">
-            <div class="progress" id="progress"></div>
-            <div class="text-wrap active">
-                <div class="circle" style={{color:'white'}}>1</div>
-                <p class="text-active">Customer</p>
-            </div>
-            <div class="text-wrap">
-                <div class="empty-circle">2</div>
-                <p class="text">Delivery</p>
-            </div>
-            <div class="text-wrap">
-                <div class="empty-circle">3</div>
-                <p class="text">Payment</p>
-            </div>
-            <div class="text-wrap">
-                <div class="empty-circle">4</div>
-                <p class="text">Review</p>
-            </div>
-        </div> */}
               <div>
                 <div className='carthead mt-5'>
                   <h1>

@@ -73,7 +73,7 @@ function UserHomeBody() {
 
   return (
     <div className='user-home' data-theme={selectedTheme}>
-      <div className='container border-0 mt-3'>
+      <div className='container border-0 mt-4' >
         <div className='row row-cols-1 row-cols-md-2 row-cols-lg-3 row-cols-lg-4 g-4 product-card'>
         {products.map((cardData, index) => (
           <div className={`col ${isLatestProduct(cardData.date) ? 'latest-product' : ''}`} key={index}>

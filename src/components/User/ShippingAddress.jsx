@@ -126,7 +126,7 @@ function ShippingAddress() {
             <div className="col text-start">
               <label htmlFor="mobile1" className="form-label">Mobile Number:</label>
               <input
-                type="number"
+                type="text"
                 className="form-control"
                 placeholder="Primary number"
                 name="mobile1"

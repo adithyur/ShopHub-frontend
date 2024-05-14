@@ -188,23 +188,27 @@ function Checkout() {
                 <label className="fname">Name*</label>
                 <input
                   className="checktxt"
+                  placeholder='Name'
                   type="text"
                   name="name"
                   value={bio.name}
                   onChange={handlechange}
+                  required
                 />
               </div>
               <div className='checkform2'>
                 <label className="fname">Mobile Number*</label>
                 <input
                   className="checktxt"
-                  type="number"
+                  placeholder='Mobile Number'
+                  type="text"
                   name="mobile1"
                   pattern="[5-9]{1}[0-9]{9}"
                   maxLength="10"
                   title="Must contain 10 numbers and first digit in greater than 5"
                   value={bio.mobile1}
                   onChange={handlechange}
+                  required
                 />
               </div>
             </div>
@@ -218,6 +222,7 @@ function Checkout() {
                     maxLength="6"
                     value={bio.pincode}
                     onChange={handlechange}
+                    required
                   />
                 </div>
                 <div className='checkform4'>
@@ -228,6 +233,7 @@ function Checkout() {
                     name="place"
                     value={bio.place}
                     onChange={handlechange}
+                    required
                   />
                 </div>
                 </div>
@@ -240,6 +246,7 @@ function Checkout() {
                     rows="4" cols="16"
                     value={bio.address}
                     onChange={handlechange}
+                    required
                   />
                 </div>
                 <div className='vertical3'>
@@ -251,6 +258,7 @@ function Checkout() {
                     name="city"
                     value={bio.city}
                     onChange={handlechange}
+                    required
                   />
                 </div>
                 <div className='checkform7'>
@@ -261,6 +269,7 @@ function Checkout() {
                     name="state"
                     value={bio.state}
                     onChange={handlechange}
+                    required
                   />
                 </div>
                 </div>            

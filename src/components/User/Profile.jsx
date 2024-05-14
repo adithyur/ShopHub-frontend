@@ -39,35 +39,6 @@ export default function Profile() {
     setShowLogoutOverlay(true); 
   }
 
-    
-
-    /*const handleChange = (e) => {
-      const { name, value, type } = e.target;
-      setFormData((prevData) => ({
-      ...prevData,
-      [name]: value,
-    }));
-  };
-
-    const handleSubmit = async(e) => {
-    e.preventDefault();
-    try{
-      if (formData.mobile1===formData.mobile2){
-        alert("use different mobile number as secondary")
-        }
-      else{
-        //console.log(formData)
-        await axios.post('https://shophub-backend.onrender.com/api/profile/profile', formData);
-        setFormData({ name: '', mobile1: '', pincode: '', place: '', address: '', city: '',state: '',landmark: '',mobile2: '' });
-        alert(" successfully")
-      }
-    }
-     catch{
-      alert("can't insert address")
-    }
-
-    };*/
-
   useEffect(() => {
         const fetchUserName = async () => {
           try {

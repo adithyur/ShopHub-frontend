@@ -115,7 +115,7 @@ function EdtProduct() {
         setToastShown(true);
       }
 
-      navigate('/ViewProduct');
+      navigate('/viewproduct');
     } catch (error) {
       console.error('Error updating product:', error);
       toast.error('Error updating product');

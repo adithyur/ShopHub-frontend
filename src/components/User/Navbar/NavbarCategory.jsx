@@ -95,7 +95,7 @@ function NavbarCategory() {
 
   return (
     <div className='nav-bar-lg' data-theme={selectedTheme}>
-<div className='container' >
+<div className='container'>
 <div className='d-flex align-items-center overflow-auto navbar-category' style={{ borderBottom: '1px solid rgb(214, 206, 206)!important' , scrollbarWidth:'thin', scrollBehavior:'smooth', scrollbarColor:'transparent transparent'}}>
     <div style={{ paddingLeft: '25px' }}>
 

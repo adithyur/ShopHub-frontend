@@ -3,7 +3,7 @@ import axios from 'axios';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { useMediaQuery } from 'react-responsive';
 import UserNavbar from './User/Navbar/UserNavbar';
-import MiniNavBar2 from './User/Navbar/MiniNavBar2';
+import MiniNavBar from './User/Navbar/MiniNavBar';
 import MiniNavbarFooter from './User/Navbar/MiniNavbarFooter';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faHeart } from '@fortawesome/free-solid-svg-icons';
@@ -310,7 +310,7 @@ function ProductDetails() {
   return (
 <div>
     <div>
-        {isMobile ? <MiniNavBar2/> : <UserNavbar/>}
+        {isMobile ? <MiniNavBar/> : <UserNavbar/>}
     </div>
     <div className='product-details' data-theme={selectedTheme}>
         <div className='container'>

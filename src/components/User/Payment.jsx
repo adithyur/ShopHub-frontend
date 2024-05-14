@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import { useLocation, useNavigate } from 'react-router-dom';
+import { useMediaQuery } from 'react-responsive';
 import UserNavbar from './Navbar/UserNavbar';
+import MiniNavBar from './Navbar/MiniNavBar';
 
 function Payment() {
 
@@ -10,6 +12,7 @@ function Payment() {
   const orderId = searchParams.get('orderId');
   const productId = searchParams.get('productId');
   const authid = localStorage.getItem('authid');
+  const isMobile = useMediaQuery({ query: '(max-width: 980px)' });
   const currentDate = new Date();
   const navigate = useNavigate();
   ////console.log("product id : ", productId);
@@ -106,7 +109,7 @@ function Payment() {
   return (
     <div>
         <div>
-            <UserNavbar/>
+          {isMobile ? <MiniNavBar /> : <UserNavbar />} 
         </div>
         <div className="container mt-5">
       <h2 className="mb-4">Payment Information</h2>

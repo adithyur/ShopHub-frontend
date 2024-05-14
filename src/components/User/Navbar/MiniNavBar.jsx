@@ -6,21 +6,12 @@ import { useMediaQuery } from 'react-responsive';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import '../../Styles/style.css';
 
-
-
 function MiniNavBar() {
   const selectedTheme = localStorage.getItem("selectedTheme");
   const [userName, setUserName] = useState('');
   const [searchData, setSearchData] = useState('');
   const [isInputClicked, setIsInputClicked] = useState(false);
   const isMobile = useMediaQuery({ query: '(max-width: 767px)' });
-
-  // useEffect(() => {
-  //   const authid = localStorage.getItem('authid');
-  //   if (!authid) {
-  //     navigate('/login');
-  //   }
-  // }, []);
 
   const navigate = useNavigate();
   const [isOpen, setIsOpen] = useState(false);

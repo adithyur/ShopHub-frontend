@@ -13,7 +13,6 @@ import MiniNavBar from './components/User/Navbar/MiniNavBar';
 import MiniNavbarFooter from './components/User/Navbar/MiniNavbarFooter';
 import UserHome from './components/User/UserHome';
 import Profile from './components/User/Profile';
-import AddProduct from './components/User/AddProduct';
 import UserHomeBody from './components/User/UserHomeBody';
 import ProductDetails from './components/ProductDetails';
 import Review from './components/User/Review';
@@ -42,6 +41,7 @@ import ManageSellers from './components/Admin/ManageSellers';
 import ViewOrder from './components/Admin/ViewOrder';
 
 import SellerHome from './components/Seller/SellerHome';
+import AddProduct from './components/Seller/AddProduct';
 import OrderUpdate from './components/Seller/OrderUpdate';
 import ProductMnagement from './components/Seller/ProductMnagement';
 import ViewProduct from './components/Seller/ViewProduct';
@@ -49,10 +49,10 @@ import OrderView from './components/Seller/OrderView';
 import ViewOrderDetails from './components/Admin/ViewOrderDetails';
 import SellerViewOrder from './components/Seller/SellerViewOrder';
 import SellerOrderDetails from './components/Seller/SellerOrderDetails';
+import EdtProduct from './components/Seller/EdtProduct';
 
 import NotFound from './components/NotFound';
 import Sample from './components/Admin/Sample';
-import EdtProduct from './components/Seller/EdtProduct';
 
 
 
@@ -79,7 +79,6 @@ function App() {
           <Route path='/cart' element={<Cart/>}/>
           <Route path='/checkout' element={<Checkout/>}/>
           <Route path='/creditcardform' element={<CreditCardForm/>}/>
-          {/* <Review path='/wishlist' element={<Wishlist/>}/> */}
           <Route path='/wishlists' element={<Wishlists/>}/>
           <Route path='/orderdetails' element={<OrderDetails/>}/>
           <Route path='/payment' element={<Payment/>}/>
