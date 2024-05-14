@@ -284,7 +284,7 @@ function AddProduct() {
             >
               <option value="">Select Category</option>
               <option value="refridgerator">Refrigerator</option>
-              <option value="watch">Watch</option>
+              <option value="watches">Watch</option>
               <option value="sports">Sports</option>
               <option value="mobile">Mobile</option>
               <option value="tv">TV</option>

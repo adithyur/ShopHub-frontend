@@ -361,41 +361,23 @@ function ProductDetails() {
             </div>
           </div> */}
           <div className='responsive-gallery'>
-      {/* <div className='gallery-item'>
+       <div className='gallery-item'>
         <img className='gallery-img' src={product.image} alt='Product' />
-        <div className='overlay'>
-          <p>Image 1</p>
-        </div>
       </div>
 
       <div className='gallery-item'>
         <img className='gallery-img' src={product.image2} alt='Product' />
-        <div className='overlay'>
-          <p>Image 2</p>
-        </div>
       </div>
 
       <div className='gallery-item'>
         <img className='gallery-img' src={product.image3} alt='Product' />
-        <div className='overlay'>
-          <p>Image 3</p>
-        </div>
       </div>
 
       <div className='gallery-item'>
         <img className='gallery-img' src={product.image4} alt='Product' />
-        <div className='overlay'>
-          <p>Image 4</p>
-        </div>
-      </div>
+      </div> 
 
-      <div className='gallery-item'>
-        <img className='gallery-img' src={product.image5} alt='Product' />
-        <div className='overlay'>
-          <p>Image 5</p>
-        </div>
-      </div> */}
-      <div className="row">
+      {/* <div className="row">
       <div className="col-md-6 mb-3" style={{overflow:'hidden'}}>
           <img src={product.image} className="img-fluid product-img" alt="Image 1" style={{ objectFit: 'cover', width: '100%', height: '100%' }}/>
         </div>
@@ -415,7 +397,7 @@ function ProductDetails() {
             </div>
           </div>
         </div>
-      </div>
+      </div> */}
     </div>
           <div className="product-detail" style={{ borderBottom: '1px solid rgb(225, 217, 217)', }}>
             <div style={{ height: '100px' }}>

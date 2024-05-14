@@ -687,6 +687,11 @@ color: goldenrod ;
   width: 100%;
   height: 100%;
   display: block;
+  transition: transform 1s;
+}
+
+.gallery-img:hover {
+  transform: scale(1.09,1.09);
 }
 
 .overlay {
