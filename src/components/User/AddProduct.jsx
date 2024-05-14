@@ -248,7 +248,7 @@ function AddProduct() {
               required
             />
           </div>
-        <div className="col-md-6 col-sm-6">
+          <div className="col-md-6 col-sm-6">
             <label htmlFor="offer" className="form-label">Offer</label>
             <input
               type="number"
@@ -288,7 +288,7 @@ function AddProduct() {
               <option value="sports">Sports</option>
               <option value="mobile">Mobile</option>
               <option value="tv">TV</option>
-              <option value="headphone">Headphone</option>
+              <option value="headset">Headphone</option>
               <option value="washing machine">Washing Machine</option>
             </select>
           </div>

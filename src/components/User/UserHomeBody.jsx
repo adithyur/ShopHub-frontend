@@ -63,7 +63,7 @@ function UserHomeBody() {
     const productDate = new Date(date);
     const timeDifference = Math.abs(currentDate - productDate);
     const daysDifference = Math.ceil(timeDifference / (1000 * 60 * 60 * 24));
-    return daysDifference <= 7; // Highlight products added in the last 7 days
+    return daysDifference <= 24; // Highlight products added in the last 24 days
   };
     
 

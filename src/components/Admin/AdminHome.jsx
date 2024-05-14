@@ -20,6 +20,10 @@ function AdminHome() {
   const authrole = localStorage.getItem('authrole');
   const [toastShown, setToastShown] = useState(false);
 
+  if(authrole!='admin'){
+    navigate('*')
+  }
+
   useEffect(() => {
     if (authrole === 'admin' && !toastShown) {
       toast.success("Welcome back Admin!");

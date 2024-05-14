@@ -27,7 +27,7 @@ function EdtProduct() {
     price: '',
     productType: '',
     category: '',
-    brand: '',
+    offer: '',
     image1: null,
     image2: null,
     image3: null,
@@ -83,9 +83,7 @@ function EdtProduct() {
       const formData = new FormData();
       formData.append('productName', product.productName);
       formData.append('price', product.price);
-      formData.append('productType', product.productType);
-      formData.append('category', product.category);
-      formData.append('brand', product.brand);
+      formData.append('offer', product.offer);
       formData.append('description', product.description);
       formData.append('quantity', product.quantity);
 
@@ -273,15 +271,17 @@ function EdtProduct() {
         </div>
 
         <div className="col-md-6 col-sm-6">
-          <label htmlFor="brand" className="form-label">Brand</label>
+            <label htmlFor="offer" className="form-label">Offer</label>
             <input
-              type="text"
-              placeholder="Brand"
-              name="brand"
-              value={product.brand}
+              type="number"
+              className="form-control"
+              placeholder="Offer %"
+              name="offer"
+              value={product.offer}
               onChange={handleChange}
+              required
             />
-        </div>
+          </div>
       </div>
 
       <div className="col-md-11 col-sm-8 ms-4">

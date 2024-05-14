@@ -12,6 +12,7 @@ import { FaUser } from 'react-icons/fa';
 function UserNavbar() {
 
   const selectedTheme = localStorage.getItem("selectedTheme");
+  const authrole = localStorage.getItem('authrole');
   const authid= localStorage.getItem('authid')
   const [userName, setUserName] = useState('');
   const [searchData, setSearchData] = useState('');
@@ -90,7 +91,15 @@ function UserNavbar() {
           }
           
            else {
-            navigate('/profile');
+            if(authrole==='user'){
+              navigate('/profile');
+            }
+            else if(authrole==='admin'){
+              navigate('/adminhome');
+            }
+            else{
+              navigate('/sellerhome');
+            }
            }
       }
 
