@@ -1762,7 +1762,7 @@ button.sendicon:hover {
 }
 
 .verifier_table_tr:hover{
-  background: linear-gradient(90deg, rgba(0,2,11,1) 0%, rgba(187,55,82,1) 100%);
+  background: linear-gradient(90deg, rgba(187,55,82,1) 0%, rgba(0,2,11,1) 100%);
 
 }
 
