@@ -52,9 +52,6 @@ import SellerOrderDetails from './components/Seller/SellerOrderDetails';
 import EdtProduct from './components/Seller/EdtProduct';
 
 import NotFound from './components/NotFound';
-import Sample from './components/Admin/Sample';
-
-
 
 function App() {
   const selectedTheme = localStorage.getItem("selectedTheme");
@@ -106,7 +103,6 @@ function App() {
           <Route path='/sellerorderdetails' element={<SellerOrderDetails/>}/>
 
           <Route path='/darkmode' element={<DarkMode/>}/>
-          <Route path='/Sample' element={<Sample/>}/>
 
           <Route path='*' element={<NotFound />} />       
 

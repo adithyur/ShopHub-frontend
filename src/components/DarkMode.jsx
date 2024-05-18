@@ -29,7 +29,7 @@ const DarkMode = () => {
         } else {
             setLightMode();
         }
-        navigate('/profile')
+        window.location.reload();
     };
 
     return (
