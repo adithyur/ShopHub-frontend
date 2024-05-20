@@ -125,7 +125,7 @@ function SellerViewOrder() {
           </div>
         </div>
         <div className='table-responsive-seller' style={{ maxHeight: '500px', overflowY: 'auto', overflowX: 'auto'}}>
-        <div className='order-search-box'>
+        {/* <div className='order-search-box'>
         <input
           type="text"
           placeholder="Search..."
@@ -135,7 +135,7 @@ function SellerViewOrder() {
         />
         <button className="order-search-button">Search</button>
 
-      </div>
+      </div> */}
       <table className='verifier_product_table_seller'>
         <thead>
           <tr className='verifierproduct_tr'>
@@ -144,7 +144,6 @@ function SellerViewOrder() {
             <th className='verifierproduct_th'>Product Id</th>
             <th className='verifierproduct_th'>Price</th>
             <th className='verifierproduct_th'>Status</th>
-            <th className='verifierproduct_th'>Action</th>
           </tr>
         </thead>
         <tbody>
@@ -157,11 +156,6 @@ function SellerViewOrder() {
               <td className='verifierproduct_td'>{order.productid._id}</td>
               <td className='verifierproduct_td'>₹{order.total}</td>
               <td className='verifierproduct_td'>{order.status}</td>
-              <td>
-                {order.status === 'pending' ? (
-                  <button className="button-124" role="button" onClick={() => handleAction(order.orderid)}>APPROVE</button>
-                ) : null}
-              </td>
             </tr>
           ))}
         </tbody>
