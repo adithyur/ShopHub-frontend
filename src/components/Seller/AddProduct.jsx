@@ -289,6 +289,7 @@ function AddProduct() {
               <option value="mobile">Mobile</option>
               <option value="tv">TV</option>
               <option value="headset">Headphone</option>
+              <option value="computer">Computer</option>
               <option value="washing machine">Washing Machine</option>
             </select>
           </div>
