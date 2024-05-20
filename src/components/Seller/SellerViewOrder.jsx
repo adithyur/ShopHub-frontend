@@ -55,7 +55,7 @@ function SellerViewOrder() {
         const orderDetail = (orderId ) => {
           /*//console.log("order id  : ", orderId)
           //console.log("product id : ",productId)*/
-          navigate(`/vieworderdetails?orderId=${orderId}`);
+          navigate(`/sellerorderdetails?orderId=${orderId}`);
           //console.log('order id ',orderId)
         };
 
