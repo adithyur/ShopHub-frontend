@@ -112,7 +112,7 @@ function NavbarCategory() {
         <span>Mobile</span>
       </a>
 
-          <a onClick={()=>{navigate(`/category?category=${'headset'}`)}} children="nav-item" className='homeicon2'>
+          <a onClick={()=>{navigate(`/category?category=${'headphone'}`)}} children="nav-item" className='homeicon2'>
             <MdHeadset size={28}/>
             <br></br>
             <span>Headphone</span>
