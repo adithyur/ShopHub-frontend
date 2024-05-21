@@ -198,9 +198,9 @@ return
   const deleteOrders = async () => {
     try {
       await axios.delete(`https://shophub-backend.onrender.com/api/order/delete/${localStorage.getItem('authid')}`, {
-        params: { status: 'waiting for confirmation' },
+        params: { status: 'cart' },
       });
-      console.log('Orders with status "waiting for confirmation" deleted.');
+      console.log('Orders with status "cart" deleted.');
     } catch (error) {
       console.error('Error deleting orders:', error);
     }
