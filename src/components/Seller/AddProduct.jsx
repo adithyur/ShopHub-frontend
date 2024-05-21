@@ -248,7 +248,7 @@ function AddProduct() {
               required
             />
           </div>
-          <div className="col-md-6 col-sm-6">
+        <div className="col-md-6 col-sm-6">
             <label htmlFor="offer" className="form-label">Offer</label>
             <input
               type="number"
