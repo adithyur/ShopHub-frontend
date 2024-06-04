@@ -25,7 +25,7 @@ function Payment() {
     const [cardHolder, setCardHolder] = useState('');
     const [expirationMonth, setExpirationMonth] = useState('');
     const [expirationYear, setExpirationYear] = useState('');
-    const [ccv, setCcv] = useState('');
+    const [cvv, setCvv] = useState('');
 
     const handlePaymentMethodChange = (e) => {
       setPaymentMethod(e.target.value);
@@ -47,8 +47,8 @@ function Payment() {
       setExpirationYear(e.target.value);
     };
 
-    const handleCcvChange = (e) => {
-      setCcv(e.target.value);
+    const handleCvvChange = (e) => {
+      setCvv(e.target.value);
     };
 
     const handlePaymentSubmit = async (e) => {
@@ -59,7 +59,7 @@ function Payment() {
         cardHolder,
         expirationMonth,
         expirationYear,
-        ccv,
+        cvv,
       };
   
       try {
@@ -153,7 +153,7 @@ function Payment() {
                   value={cardHolder}
                   onChange={handleCardHolderChange}
                   className="form-control"
-                  placeholder="Antony"
+                  placeholder="Card Holder Name"
                   required
                 />
               </div>
@@ -216,16 +216,16 @@ function Payment() {
           </div>
 
           <div className="form-group">
-            <label htmlFor="ccv">CCV</label>
+            <label htmlFor="cvv">CVV</label>
             <input
               type="text"
-              id="ccv"
-              value={ccv}
-              onChange={handleCcvChange}
+              id="cvv"
+              value={cvv}
+              onChange={handleCvvChange}
               className="form-control"
               placeholder="123"
               pattern="^(?!0{1,16}$)\d{3}$"
-              title="Please enter a valid 3-digit CCV number."
+              title="Please enter a valid 3-digit CVV number."
               required
             />
           </div>
