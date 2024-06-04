@@ -15,7 +15,6 @@ function Payment() {
   const isMobile = useMediaQuery({ query: '(max-width: 980px)' });
   const currentDate = new Date();
   const navigate = useNavigate();
-  ////console.log("product id : ", productId);
   const authrole = localStorage.getItem('authrole');
     if(authrole!='user'){
       navigate('*')
