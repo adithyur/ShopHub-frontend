@@ -162,7 +162,7 @@ function Payment() {
           <div className="row">
             <div className="col-md-6">
               <div className="form-group">
-                <label htmlFor="expirationMonth">Expiration Date</label>
+                <label htmlFor="expirationMonth">Expiry Date</label>
                 <div className="expiration-date">
                     <select
                         id="expirationMonth"

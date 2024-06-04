@@ -239,7 +239,7 @@ const navigate = useNavigate();
               />
             </div>
             <div className="form-group">
-              <label htmlFor="expirationMonth">Expiration Date</label>
+              <label htmlFor="expirationMonth">Expiry Date</label>
               <div className="expiration-date">
                 <select
                   id="expirationMonth"
